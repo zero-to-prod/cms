@@ -7,9 +7,8 @@ use Tests\TestCase;
 
 class PingTest extends TestCase
 {
-
     /**
-     * test
+     * test.
      *
      * @see PingController
      */
