@@ -1,5 +1,9 @@
 # Server Side CMS Readme
 
+## Continuous Integrations Tools
+- StyleCi
+- TravisCi
+
 ## Architecture Overview
 There is a server side application that interfaces with a client side application through an API.
 
