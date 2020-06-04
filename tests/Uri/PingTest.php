@@ -9,12 +9,15 @@ class PingTest extends TestCase
 {
 
     /**
-     * test
+     * @test
      *
      * @see PingController
      */
     public function ping(): void
     {
-        $this->get(route('api.ping'))->assertSuccessful();
+        $response = $this->get(route('api.ping'))->assertSuccessful();
+
+        // Asserts response contains something like 'PONG'
+        $response->assertSee(config('api.ping_response'));
     }
 }
