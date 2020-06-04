@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'ping_response' => 'PONG'
+    'ping_response' => 'PONG',
 ];
