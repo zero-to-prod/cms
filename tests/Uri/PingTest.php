@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class PingTest extends TestCase
 {
-
     /**
      * @test
      *
