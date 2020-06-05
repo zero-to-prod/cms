@@ -10,4 +10,3 @@ Route::namespace('Api')->group(static function () {
     /** @see \Tests\Uri\PingTest */
     Route::get('/ping', 'PingController')->name('api.ping');
 });
-
