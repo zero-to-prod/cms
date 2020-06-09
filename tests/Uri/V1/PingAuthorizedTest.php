@@ -7,7 +7,6 @@ use Tests\PassportTestCase;
 
 class PingAuthorizedTest extends PassportTestCase
 {
-
     use DatabaseTransactions;
 
     public function testRestrictedRoute(): void

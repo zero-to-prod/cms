@@ -2,7 +2,7 @@
 
 use Laravel\Passport\ClientRepository;
 
-if ( ! function_exists('create_oauth_client')) {
+if (! function_exists('create_oauth_client')) {
     /**
      * @param $name
      * @param  null  $userId

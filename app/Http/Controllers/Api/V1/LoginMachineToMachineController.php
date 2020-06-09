@@ -11,7 +11,6 @@ use Tests\Uri\V1\LoginMachineToMachineTest;
 
 class LoginMachineToMachineController
 {
-
     /** @param  Request  $request
      * @return Application|ResponseFactory|Response
      * @see LoginMachineToMachineTest

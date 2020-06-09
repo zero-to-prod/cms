@@ -7,7 +7,6 @@ use Tests\Uri\V1\PingAuthorizedTest;
 
 class PingAuthorizedController extends Controller
 {
-
     /** @see PingAuthorizedTest */
     public function __invoke()
     {
