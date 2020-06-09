@@ -9,5 +9,4 @@ use Laravel\Passport\Client;
  */
 class OauthClient extends Client
 {
-
 }

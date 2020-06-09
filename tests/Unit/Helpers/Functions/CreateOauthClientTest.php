@@ -8,7 +8,6 @@ use Tests\TestCase;
 /** @see create_oauth_client() */
 class CreateOauthClientTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /** @test */
@@ -20,13 +19,13 @@ class CreateOauthClientTest extends TestCase
     /** @test */
     public function create_oauth_client(): void
     {
-        $name           = 'Test Client';
-        $user_id        = 100;
-        $redirect       = 'url.domain';
-        $provider       = 'provider';
+        $name = 'Test Client';
+        $user_id = 100;
+        $redirect = 'url.domain';
+        $provider = 'provider';
         $personalAccess = true;
-        $password       = true;
-        $confidential   = true;
+        $password = true;
+        $confidential = true;
 
         $oauth_client = create_oauth_client($name, $user_id, $redirect, $provider, $personalAccess, $password,
             $confidential);

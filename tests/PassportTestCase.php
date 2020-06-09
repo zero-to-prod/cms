@@ -11,12 +11,11 @@ use Laravel\Passport\ClientRepository;
 
 class PassportTestCase extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
     protected $headers = [];
-    protected $scopes  = [];
+    protected $scopes = [];
     protected $user;
 
     public function delete($uri, array $data = [], array $headers = [])
@@ -73,7 +72,7 @@ class PassportTestCase extends TestCase
     {
         parent::setUp();
         $clientRepository = new ClientRepository();
-        $client           = $clientRepository->createPersonalAccessClient(
+        $client = $clientRepository->createPersonalAccessClient(
             null, 'Test Personal Access Client', config('app.url')
         );
 
@@ -82,9 +81,9 @@ class PassportTestCase extends TestCase
             'created_at' => new DateTime,
             'updated_at' => new DateTime,
         ]);
-        $this->user                     = factory(User::class)->create();
-        $token                          = $this->user->createToken('TestToken', ['*'])->accessToken;
-        $this->headers['Accept']        = 'application/json';
+        $this->user = factory(User::class)->create();
+        $token = $this->user->createToken('TestToken', ['*'])->accessToken;
+        $this->headers['Accept'] = 'application/json';
         $this->headers['Authorization'] = 'Bearer '.$token;
     }
 }
