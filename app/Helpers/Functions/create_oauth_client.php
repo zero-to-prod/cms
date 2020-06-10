@@ -5,9 +5,9 @@ use Laravel\Passport\ClientRepository;
 if (! function_exists('create_oauth_client')) {
     /**
      * @param $name
-     * @param  null  $userId
-     * @param $redirect
-     * @param  null  $provider
+     * @param  string  $userId
+     * @param  string  $redirect
+     * @param  string  $provider
      * @param  bool  $personalAccess
      * @param  bool  $password
      * @param  bool  $confidential
