@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Str;
 
-if ( ! function_exists('slug')) {
+if (! function_exists('slug')) {
     /**
-     * Generates a slug
+     * Generates a slug.
      *
      * @param  string  $string
      *

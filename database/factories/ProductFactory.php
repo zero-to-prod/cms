@@ -14,6 +14,6 @@ $factory->define(Product::class, static function (Faker $faker) {
         'name'            => $name,
         'slug'            => slug($name),
         'description'     => $faker->sentence,
-        'product_type_id' => factory(ProductType::class)
+        'product_type_id' => factory(ProductType::class),
     ];
 });

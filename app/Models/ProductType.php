@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductType extends Model
 {
-
     protected $fillable = ['name', 'description'];
 
     /**
