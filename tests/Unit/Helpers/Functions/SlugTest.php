@@ -7,8 +7,7 @@ use Tests\TestCase;
 /** @see slug() */
 class SlugTest extends TestCase
 {
-
- /** @test */
+    /** @test */
     public function see_if_function_exits(): void
     {
         $this->assertTrue(function_exists('slug'));

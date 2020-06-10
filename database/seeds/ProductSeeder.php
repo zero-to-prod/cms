@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -14,12 +13,12 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $part     = factory(ProductType::class)->states('part')->create();
+        $part = factory(ProductType::class)->states('part')->create();
         $assembly = factory(ProductType::class)->states('assembly')->create();
 
-        factory(Product::class,3)->createMany([
+        factory(Product::class, 3)->createMany([
             ['product_type_id' => $part],
-            ['product_type_id' => $assembly]
+            ['product_type_id' => $assembly],
         ]);
     }
 }

@@ -2,5 +2,5 @@
 
 return [
     'separator'     => '_',
-    'separator_uri' => '-'
+    'separator_uri' => '-',
 ];

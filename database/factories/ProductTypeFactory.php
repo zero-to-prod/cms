@@ -12,7 +12,7 @@ $factory->define(ProductType::class, static function (Faker $faker) {
     return [
         'name'        => $name,
         'slug'        => slug($name),
-        'description' => $faker->sentence
+        'description' => $faker->sentence,
     ];
 });
 
@@ -22,7 +22,7 @@ $factory->state(ProductType::class, 'part', static function (Faker $faker) {
     return [
         'name'        => $name,
         'slug'        => slug($name),
-        'description' => "Description of $name."
+        'description' => "Description of $name.",
     ];
 });
 
@@ -32,6 +32,6 @@ $factory->state(ProductType::class, 'assembly', static function (Faker $faker) {
     return [
         'name'        => $name,
         'slug'        => slug($name),
-        'description' => "Description of $name."
+        'description' => "Description of $name.",
     ];
 });

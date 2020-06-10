@@ -70,7 +70,7 @@ return [
     */
     'resources'       => [
         'products'      => Product::class,
-        'product_types' => ProductType::class
+        'product_types' => ProductType::class,
     ],
 
     /*
