@@ -23,7 +23,6 @@ JsonApi::register('default')->routes(static function ($api) {
             /** @see \Tests\Uri\V1\LoginMachineToMachineTest */
             Route::post('/login-machine-to-machine', 'LoginMachineToMachineController')->name('api.v1.login-machine');
             Route::group(['middleware' => 'client'], static function () {
-
             });
         });
     });
