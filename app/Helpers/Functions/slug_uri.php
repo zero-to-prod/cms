@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Str;
 
-if ( ! function_exists('slug_uri')) {
+if (! function_exists('slug_uri')) {
     /**
-     * Generates a slug for a URI
+     * Generates a slug for a URI.
      *
      * @param  string  $string
      *

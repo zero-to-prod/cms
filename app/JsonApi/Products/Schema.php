@@ -7,7 +7,6 @@ use Neomerx\JsonApi\Schema\SchemaProvider;
 
 class Schema extends SchemaProvider
 {
-
     /**
      * @var string
      */
@@ -47,7 +46,7 @@ class Schema extends SchemaProvider
             'product_type' => [
                 self::SHOW_SELF    => true,
                 self::SHOW_RELATED => true,
-            ]
+            ],
         ];
     }
 }

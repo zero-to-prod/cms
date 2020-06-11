@@ -7,7 +7,6 @@ use Tests\TestCase;
 /** @see slug_uri() */
 class SlugUriTest extends TestCase
 {
-
     /** @test */
     public function see_if_function_exits(): void
     {
