@@ -14,17 +14,17 @@ JsonApi::register('default')->routes(static function ($api) {
     $api->resource('products')->relationships(static function ($relations) {
         $relations->hasOne('product_types');
     });
-});
 
-Route::namespace('Api')->group(static function () {
-    /** @see \Tests\Uri\PingTest */
-    Route::get('/ping', 'PingController')->name('api.ping');
-    Route::prefix('v1')->namespace('V1')->group(static function () {
-        /** @see \Tests\Uri\V1\LoginMachineTest */
-        Route::post('/login-machine-to-machine', 'LoginMachineToMachineController')->name('api.v1.login-machine');
-        Route::group(['middleware' => 'client'], static function () {
-            /** @see \Tests\Uri\V1\PingAuthorizedTest */
-            Route::get('ping-authorized', 'PingAuthorizedController')->name('api.ping-authorize');
+    Route::namespace('Api')->group(static function () {
+        Route::post('/register', 'RegisterController');
+        Route::post('/login', 'LoginController');
+        Route::middleware('auth:api')->post('/logout', 'LogoutController');
+        Route::namespace('V1')->group(static function () {
+            /** @see \Tests\Uri\V1\LoginMachineToMachineTest */
+            Route::post('/login-machine-to-machine', 'LoginMachineToMachineController')->name('api.v1.login-machine');
+            Route::group(['middleware' => 'client'], static function () {
+
+            });
         });
     });
 });

@@ -28,6 +28,6 @@ class LoginMachineToMachineController
             ],
         ]);
 
-        return json_decode((string) $response->getBody(), true)['access_token'];
+        return json_decode((string) $response->getBody(), true);
     }
 }
