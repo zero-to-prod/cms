@@ -4,6 +4,7 @@ namespace Tests\Uri\V1;
 
 use App\Http\Controllers\Api\V1\LoginMachineToMachineController;
 use Tests\PassportTestCase;
+
 /** @see LoginMachineToMachineController */
 class LoginMachineToMachineTest extends PassportTestCase
 {

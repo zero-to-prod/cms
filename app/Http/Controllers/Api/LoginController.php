@@ -12,7 +12,6 @@ use Psr\Http\Message\StreamInterface;
 
 class LoginController
 {
-
     /**
      * @param  Request  $request
      *
@@ -29,7 +28,7 @@ class LoginController
                     'client_secret' => $request->client_secret,
                     'username'      => $request->username,
                     'password'      => $request->password,
-                ]
+                ],
             ]);
 
             return $response->getBody();
