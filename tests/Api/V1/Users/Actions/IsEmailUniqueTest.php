@@ -11,7 +11,6 @@ use Tests\TestCase;
 /** @see IsEmailUniqueController */
 class IsEmailUniqueTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -20,15 +19,15 @@ class IsEmailUniqueTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        $email           = 'email@domain.com';
+        $email = 'email@domain.com';
         $request_payload = [
-            'email' => $email
+            'email' => $email,
         ];
         $this->post(self::ROUTE, $request_payload)
             ->assertStatus(200)
             ->assertJson([
                 'email'     => $email,
-                'is_unique' => true
+                'is_unique' => true,
             ]);
     }
 
@@ -38,13 +37,13 @@ class IsEmailUniqueTest extends TestCase
         $email = 'email@domain.com';
         factory(User::class)->create(['email' => $email]);
         $request_payload = [
-            'email' => $email
+            'email' => $email,
         ];
         $this->post(self::ROUTE, $request_payload)
             ->assertStatus(200)
             ->assertJson([
                 'email'     => $email,
-                'is_unique' => false
+                'is_unique' => false,
             ]);
     }
 }
