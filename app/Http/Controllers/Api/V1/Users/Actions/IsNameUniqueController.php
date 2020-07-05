@@ -12,9 +12,8 @@ use Tests\Api\V1\Users\Actions\IsEmailUniqueTest;
 
 class IsNameUniqueController extends JsonApiController
 {
-
     /**
-     * Determines if an name is unique
+     * Determines if an name is unique.
      *
      * @param  Request  $request
      *
@@ -28,13 +27,13 @@ class IsNameUniqueController extends JsonApiController
         if ($user !== null) {
             return response([
                 'name'      => $request->name,
-                'is_unique' => false
+                'is_unique' => false,
             ], 200);
         }
 
         return response([
             'name'      => $request->name,
-            'is_unique' => true
+            'is_unique' => true,
         ], 200);
     }
 }
