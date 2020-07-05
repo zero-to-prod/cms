@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController
 {
-
     /**
      * @param  Request  $request
      *

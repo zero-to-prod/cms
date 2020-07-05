@@ -14,7 +14,6 @@ JsonApi::register('default')->routes(static function ($api) {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsNameUniqueController */
             /** @see \Tests\Api\V1\Users\Actions\IsNameUniqueTest */
             Route::post('/users/actions/is-name-unique', 'IsNameUniqueController')->withoutMiddleware('auth:api');
-
         });
 
         Route::group(['namespace' => 'V1', 'middleware' => 'client'], static function () {

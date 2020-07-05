@@ -10,7 +10,6 @@ use Tests\TestCase;
 /** @see IsNameUniqueController */
 class IsNameUniqueTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -19,15 +18,15 @@ class IsNameUniqueTest extends TestCase
     /** @test */
     public function name_is_unique()
     {
-        $name            = 'User 1';
+        $name = 'User 1';
         $request_payload = [
-            'name' => $name
+            'name' => $name,
         ];
         $this->post(self::ROUTE, $request_payload)
             ->assertStatus(200)
             ->assertJson([
                 'name'      => $name,
-                'is_unique' => true
+                'is_unique' => true,
             ]);
     }
 
@@ -37,13 +36,13 @@ class IsNameUniqueTest extends TestCase
         $name = 'User 1';
         factory(User::class)->create(['name' => $name]);
         $request_payload = [
-            'name' => $name
+            'name' => $name,
         ];
         $this->post(self::ROUTE, $request_payload)
             ->assertStatus(200)
             ->assertJson([
                 'name'      => $name,
-                'is_unique' => false
+                'is_unique' => false,
             ]);
     }
 }

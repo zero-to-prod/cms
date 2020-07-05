@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateContactsTable extends Migration
 {
-
     protected const TABLE = 'contacts';
 
     public function up()
