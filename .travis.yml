@@ -5,6 +5,7 @@ php:
 services:
   - mysql
 cache:
+  bundler: true
   directories:
     - node_modules
     - vendor
