@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Psr\Http\Message\StreamInterface;
 
 class LoginController
@@ -20,17 +19,17 @@ class LoginController
     public function __invoke(Request $request)
     {
         $http = new Client;
-        $user = User::where('email', $request->username)->first();
-        if($user->email_verified_at === null){
-            return response()->json('Email not verified', 401);
-        }
+        // $user = User::where('email', $request->username)->first();
+        // if($user->email_verified_at === null){
+        //     return response()->json('Email not verified', 401);
+        // }
         try {
             $response = $http->post(config('oauth.uri_token'), [
                 'form_params' => [
                     'grant_type'    => 'password',
                     'client_id'     => $request->client_id,
                     'client_secret' => $request->client_secret,
-                    'username'      => $request->username,
+                    'username'      => $request->email,
                     'password'      => $request->password,
                 ],
             ]);

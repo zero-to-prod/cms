@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\User;
 
 return [
 
@@ -71,6 +72,7 @@ return [
     'resources'       => [
         'products'      => Product::class,
         'product_types' => ProductType::class,
+        'users'         => User::class,
     ],
 
     /*
