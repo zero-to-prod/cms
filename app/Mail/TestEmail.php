@@ -8,7 +8,6 @@ use Illuminate\Queue\SerializesModels;
 
 class TestEmail extends Mailable
 {
-
     use Queueable, SerializesModels;
 
     /**

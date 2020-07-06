@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Mail;
 
 class SendTestEmail extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
