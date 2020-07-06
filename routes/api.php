@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 JsonApi::register('default')->routes(static function ($api) {
     Route::namespace('Api')->group(static function () {
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
+        Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
+        Route::post('/logout', 'LogoutController');
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */
             /** @see \Tests\Api\V1\Users\Actions\IsEmailUniqueTest */

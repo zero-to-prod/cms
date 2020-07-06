@@ -29,7 +29,7 @@ class Schema extends SchemaProvider
             'remember_token'    => $resource->remember_token,
             'created_at'        => $resource->created_at->toAtomString(),
             'updated_at'        => $resource->updated_at->toAtomString(),
-            'deleted_at'        => $resource->deleted_at->toAtomString(),
+            'deleted_at'        => $resource->deleted_at,
         ];
     }
 
@@ -46,11 +46,11 @@ class Schema extends SchemaProvider
 
     public function getRelationships($resource, $isPrimary, array $includeRelationships)
     {
-        // return [
-        //     'product_type' => [
-        //         self::SHOW_SELF    => true,
-        //         self::SHOW_RELATED => true,
-        //     ],
-        // ];
+        return [
+            'users' => [
+                self::SHOW_SELF    => true,
+                // self::SHOW_RELATED => true,
+            ],
+        ];
     }
 }

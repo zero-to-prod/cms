@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Psr\Http\Message\StreamInterface;
 
 class LoginController
 {
+
     /**
      * @param  Request  $request
      *
@@ -26,7 +25,7 @@ class LoginController
                     'grant_type'    => 'password',
                     'client_id'     => $request->client_id,
                     'client_secret' => $request->client_secret,
-                    'username'      => $request->username,
+                    'username'      => $request->email,
                     'password'      => $request->password,
                 ],
             ]);
