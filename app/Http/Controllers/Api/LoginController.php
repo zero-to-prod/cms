@@ -10,7 +10,6 @@ use Psr\Http\Message\StreamInterface;
 
 class LoginController
 {
-
     /**
      * @param  Request  $request
      *
