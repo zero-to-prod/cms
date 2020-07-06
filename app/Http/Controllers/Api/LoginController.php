@@ -20,6 +20,10 @@ class LoginController
     public function __invoke(Request $request)
     {
         $http = new Client;
+        $user = User::where('email', $request->username)->first();
+        if($user->email_verified_at === null){
+            return response()->json('Email not verified', 401);
+        }
         try {
             $response = $http->post(config('oauth.uri_token'), [
                 'form_params' => [

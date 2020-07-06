@@ -10,7 +10,7 @@ use Laravel\Passport\HasApiTokens;
 /**
  * @method static create(array $array)
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use HasApiTokens;
