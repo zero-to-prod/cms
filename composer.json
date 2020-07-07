@@ -40,17 +40,21 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.2.5",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "cloudcreativity/laravel-json-api": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel-frontend-presets/tall": "^1.7",
         "laravel/framework": "^7.0",
+        "laravel/horizon": "^4.3",
         "laravel/passport": "^9.2",
+        "laravel/telescope": "^3.5",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^1.0",
-        "ext-json": "*",
-        "cloudcreativity/laravel-json-api": "^2.0",
-        "neomerx/json-api": "^1.0.3"
+        "neomerx/json-api": "^1.0.3",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "cloudcreativity/json-api-testing": "^3.0",
