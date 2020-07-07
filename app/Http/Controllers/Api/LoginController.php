@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
@@ -10,7 +11,6 @@ use Psr\Http\Message\StreamInterface;
 
 class LoginController
 {
-
     /**
      * @param  Request  $request
      *
@@ -19,6 +19,10 @@ class LoginController
     public function __invoke(Request $request)
     {
         $http = new Client;
+        // $user = User::where('email', $request->username)->first();
+        // if($user->email_verified_at === null){
+        //     return response()->json('Email not verified', 401);
+        // }
         try {
             $response = $http->post(config('oauth.uri_token'), [
                 'form_params' => [
