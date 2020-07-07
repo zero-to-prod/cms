@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 
 class UserRegistered
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
