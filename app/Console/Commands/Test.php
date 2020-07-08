@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Events\UserRegistered;
+use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Redis;
 
 class Test extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -38,7 +40,7 @@ class Test extends Command
     public function handle()
     {
         echo 'Test command fired.'.PHP_EOL;
-        Redis::set('name', 'David');
-        echo Redis::get('name');
+        $user = factory(User::class)->create();
+        event(new UserRegistered($user));
     }
 }
