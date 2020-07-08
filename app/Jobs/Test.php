@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 
 class Test implements ShouldQueue
 {
-
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
