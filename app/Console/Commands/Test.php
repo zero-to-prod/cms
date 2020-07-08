@@ -5,6 +5,9 @@ namespace App\Console\Commands;
 use App\Events\UserRegistered;
 use App\Models\User;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Response;
 
 class Test extends Command
 {
@@ -35,7 +38,7 @@ class Test extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return Application|ResponseFactory|Response
      */
     public function handle()
     {
