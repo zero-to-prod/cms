@@ -11,7 +11,6 @@ use Illuminate\Http\Response;
 
 class Test extends Command
 {
-
     /**
      * The name and signature of the console command.
      *

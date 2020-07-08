@@ -10,10 +10,10 @@ JsonApi::register('default')->routes(static function ($api) {
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
         Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
         Route::post('/logout', 'LogoutController');
-        Route::get('/ship', function (Request $request)
-        {
+        Route::get('/ship', function (Request $request) {
             $id = $request->input('id');
             event(new OrderShipped($id)); // trigger event
+
             return response('Order Shipped!', 200);
         });
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
