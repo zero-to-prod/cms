@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 
 class OrderShipped implements ShouldBroadcast
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $id;

@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 
 class UserRegistered implements ShouldBroadcast
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $user;
