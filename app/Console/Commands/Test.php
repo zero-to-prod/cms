@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Events\UserRegistered;
-use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -43,7 +42,6 @@ class Test extends Command
     public function handle()
     {
         echo 'Test command fired.'.PHP_EOL;
-        $user = factory(User::class)->create();
-        event(new UserRegistered($user));
+        broadcast(new UserRegistered());
     }
 }

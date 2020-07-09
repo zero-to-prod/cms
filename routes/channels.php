@@ -18,7 +18,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('users', function ($user, $value) {
-    return true; // or false
+    return 'hit'; // or false
 });
 
 Broadcast::channel('orderStatus', function ($user, $value) {

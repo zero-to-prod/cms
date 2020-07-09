@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -28,15 +28,15 @@ class OrderShipped implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return PrivateChannel
+     * @return Channel
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('orderStatus');
+        return new Channel('orderStatus');
     }
 
     public function broadcastAs()
     {
-        return 'anyName';
+        return 'OrderShipped';
     }
 }
