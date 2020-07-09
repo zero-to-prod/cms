@@ -16,7 +16,6 @@ class UserRegistered implements ShouldBroadcast
 
     /**
      * Create a new event instance.
-     *
      */
     public function __construct()
     {
