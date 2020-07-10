@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Route;
 
 JsonApi::register('default')->routes(static function ($api) {
     Route::namespace('Api')->group(static function () {
+        Route::get('/ping/authorized', 'PingController');
+        Route::get('/ping', 'PingController')->withoutMiddleware('auth:api');
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
         Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
         Route::post('/logout', 'LogoutController');
-        Route::get('/ship', function (Request $request) {
+        Route::get('/ship', static function (Request $request) {
             $id = $request->input('id');
             event(new OrderShipped($id)); // trigger event
 

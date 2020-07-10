@@ -36,7 +36,7 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
 
         Auth::login($user, true);
 

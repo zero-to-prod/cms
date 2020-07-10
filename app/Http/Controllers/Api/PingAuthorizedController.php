@@ -10,6 +10,6 @@ class PingAuthorizedController extends Controller
     /** @see PingAuthorizedTest */
     public function __invoke()
     {
-        return response(config('api.ping_response'), 200);
+        return response(config('api.ping_authorized_response'), 200);
     }
 }
