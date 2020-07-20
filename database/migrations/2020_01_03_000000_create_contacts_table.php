@@ -8,9 +8,9 @@ class CreateContactsTable extends Migration
 {
     protected const TABLE = 'contacts';
 
-    public function up()
+    public function up(): void
     {
-        Schema::create(self::TABLE, function (Blueprint $table) {
+        Schema::create(self::TABLE, static function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
             $table->string('first_name')->nullable();
@@ -33,7 +33,7 @@ class CreateContactsTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists(self::TABLE);
     }

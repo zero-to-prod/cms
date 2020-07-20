@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Console\BaseCommand;
 use App\Mail\TestEmail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
-class SendTestEmail extends Command
+class SendTestEmail extends BaseCommand
 {
     /**
      * The name and signature of the console command.

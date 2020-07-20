@@ -1,8 +1,6 @@
 <?php
 
-use App\Events\OrderShipped;
 use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 JsonApi::register('default')->routes(static function ($api) {
@@ -12,12 +10,6 @@ JsonApi::register('default')->routes(static function ($api) {
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
         Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
         Route::post('/logout', 'LogoutController');
-        Route::get('/ship', static function (Request $request) {
-            $id = $request->input('id');
-            event(new OrderShipped($id)); // trigger event
-
-            return response('Order Shipped!', 200);
-        });
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */
             /** @see \Tests\Api\V1\Users\Actions\IsEmailUniqueTest */
@@ -28,8 +20,9 @@ JsonApi::register('default')->routes(static function ($api) {
             Route::post('/users/actions/is-name-unique', 'IsNameUniqueController')->withoutMiddleware('auth:api');
         });
 
-        Route::group(['namespace' => 'V1', 'middleware' => 'client'], static function () {
+        Route::group(['namespace' => 'V1'], static function () {
             Route::get('/user', 'UserController');
+            Route::get('auth-log', 'AuthLogController');
         });
     });
 
@@ -41,4 +34,8 @@ JsonApi::register('default')->routes(static function ($api) {
     $api->resource('products')->relationships(static function ($relations) {
         $relations->hasOne('product_types');
     });
+
+    // $api->resource('auth-logs')->relationships(static function ($relations) {
+    //     $relations->hasOne('user');
+    // });
 });

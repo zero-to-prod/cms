@@ -6,16 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
+
     protected const TABLE = 'users';
 
-    public function up()
+    public function up(): void
     {
-        Schema::create(self::TABLE, function (Blueprint $table) {
+        Schema::create(self::TABLE, static function (Blueprint $table) {
             $table->bigIncrements('id')->comment('Primary key.');
-            $table->string('name')->unique()->nullable()->comment('Used as the string identifier.');
-            $table->string('email')->unique()->comment('Used as the primary contact.');
+            $table->bigInteger('meta_id')->nullable();
+            $table->bigInteger('contact_id')->nullable()->comment('References the contacts table.');
+            $table->char('name')->nullable()->comment('Used as the string identifier.');
+            $table->char('email')->unique()->comment('Used as the primary contact.');
             $table->timestamp('email_verified_at')->nullable()->comment('Used indicate a verified account.');
-            $table->boolean('active')->default(0)->comment('Used to mark an active user.');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
@@ -23,7 +25,7 @@ class CreateUsersTable extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists(self::TABLE);
     }

@@ -4,7 +4,7 @@ namespace App\JsonApi\Users;
 
 use App\Models\User;
 use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
-use CloudCreativity\LaravelJsonApi\Eloquent\HasOne;
+use CloudCreativity\LaravelJsonApi\Eloquent\HasMany;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -45,8 +45,11 @@ class Adapter extends AbstractAdapter
         $this->filterWithScopes($query, $filters);
     }
 
-    protected function product_type(): HasOne
+    /**
+     * @return HasMany
+     */
+    protected function auth_log(): HasMany
     {
-        return $this->hasOne();
+        return $this->hasMany();
     }
 }

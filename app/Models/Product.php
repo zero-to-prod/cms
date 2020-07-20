@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'description'];
+
+    protected $fillable = ['*'];
+
+    /**
+     * @return BelongsTo
+     */
+    public function meta(): BelongsTo
+    {
+        return $this->belongsTo(Meta::class);
+    }
 
     /**
      * @return HasOne

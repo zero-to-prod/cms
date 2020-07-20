@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AuthLog;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
@@ -54,7 +55,7 @@ return [
     | different here. E.g. `App\Models`.
     |
     */
-    'model-namespace' => null,
+    'model-namespace' => 'App\Models',
 
     /*
     |--------------------------------------------------------------------------
@@ -70,9 +71,10 @@ return [
     | `'posts' => App\Post::class`
     */
     'resources'       => [
+        'auth-logs'     => AuthLog::class,
         'products'      => Product::class,
         'product_types' => ProductType::class,
-        'users'         => User::class,
+        'users'         => User::class
     ],
 
     /*

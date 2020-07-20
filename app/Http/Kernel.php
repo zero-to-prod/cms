@@ -6,6 +6,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\RequestLog;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -29,6 +30,7 @@ use Laravel\Passport\Http\Middleware\CreateFreshApiToken;
 
 class Kernel extends HttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -36,38 +38,39 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $middleware = [
-        TrustProxies::class,
-        HandleCors::class,
-        CheckForMaintenanceMode::class,
-        ValidatePostSize::class,
-        TrimStrings::class,
-        ConvertEmptyStringsToNull::class,
-    ];
-
+    protected $middleware
+        = [
+            TrustProxies::class,
+            HandleCors::class,
+            CheckForMaintenanceMode::class,
+            ValidatePostSize::class,
+            TrimStrings::class,
+            ConvertEmptyStringsToNull::class,
+            RequestLog::class
+        ];
     /**
      * The application's route middleware groups.
      *
      * @var array
      */
-    protected $middlewareGroups = [
-        'web' => [
-            EncryptCookies::class,
-            AddQueuedCookiesToResponse::class,
-            StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
-            ShareErrorsFromSession::class,
-            VerifyCsrfToken::class,
-            SubstituteBindings::class,
-            CreateFreshApiToken::class,
-        ],
+    protected $middlewareGroups
+        = [
+            'web' => [
+                EncryptCookies::class,
+                AddQueuedCookiesToResponse::class,
+                StartSession::class,
+                // \Illuminate\Session\Middleware\AuthenticateSession::class,
+                ShareErrorsFromSession::class,
+                VerifyCsrfToken::class,
+                SubstituteBindings::class,
+                CreateFreshApiToken::class,
+            ],
 
-        'api' => [
-            'throttle:60,1',
-            SubstituteBindings::class,
-        ],
-    ];
-
+            'api' => [
+                'throttle:60,1',
+                SubstituteBindings::class
+            ],
+        ];
     /**
      * The application's route middleware.
      *
@@ -75,17 +78,18 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $routeMiddleware = [
-        'auth' => Authenticate::class,
-        'auth.basic' => AuthenticateWithBasicAuth::class,
-        'bindings' => SubstituteBindings::class,
-        'cache.headers' => SetCacheHeaders::class,
-        'can' => Authorize::class,
-        'guest' => RedirectIfAuthenticated::class,
-        'password.confirm' => RequirePassword::class,
-        'signed' => ValidateSignature::class,
-        'throttle' => ThrottleRequests::class,
-        'verified' => EnsureEmailIsVerified::class,
-        'client' => CheckClientCredentials::class,
-    ];
+    protected $routeMiddleware
+        = [
+            'auth'             => Authenticate::class,
+            'auth.basic'       => AuthenticateWithBasicAuth::class,
+            'bindings'         => SubstituteBindings::class,
+            'cache.headers'    => SetCacheHeaders::class,
+            'can'              => Authorize::class,
+            'guest'            => RedirectIfAuthenticated::class,
+            'password.confirm' => RequirePassword::class,
+            'signed'           => ValidateSignature::class,
+            'throttle'         => ThrottleRequests::class,
+            'verified'         => EnsureEmailIsVerified::class,
+            'client'           => CheckClientCredentials::class
+        ];
 }

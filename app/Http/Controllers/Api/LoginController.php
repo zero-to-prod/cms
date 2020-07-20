@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\User;
+use App\Cache\User\CacheUser;
+use App\Events\LogApiLogin;
+use App\Http\Controllers\Controller;
+use App\Http\Middleware\ApiCanLogin;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Psr\Http\Message\StreamInterface;
 
-class LoginController
+class LoginController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(ApiCanLogin::class);
+    }
+
     /**
      * @param  Request  $request
      *
@@ -19,10 +28,6 @@ class LoginController
     public function __invoke(Request $request)
     {
         $http = new Client;
-        // $user = User::where('email', $request->username)->first();
-        // if($user->email_verified_at === null){
-        //     return response()->json('Email not verified', 401);
-        // }
         try {
             $response = $http->post(config('oauth.uri_token'), [
                 'form_params' => [
@@ -33,6 +38,11 @@ class LoginController
                     'password'      => $request->password,
                 ],
             ]);
+
+            if (config('api.API_AUTH_LOG_ENABLED')) {
+                $user = CacheUser::get()->where('email', $request->email)->first();
+                event(new LogApiLogin($user, $request));
+            }
 
             return $response->getBody();
         } catch (BadResponseException $e) {

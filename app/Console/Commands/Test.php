@@ -2,13 +2,14 @@
 
 namespace App\Console\Commands;
 
+use App\Console\BaseCommand;
 use App\Events\UserRegistered;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
 
-class Test extends Command
+class Test extends BaseCommand
 {
     /**
      * The name and signature of the console command.

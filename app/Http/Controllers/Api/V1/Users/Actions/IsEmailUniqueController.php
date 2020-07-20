@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Users\Actions;
 
-use App\Models\User;
+use App\Cache\User\CacheUser;
 use CloudCreativity\LaravelJsonApi\Http\Controllers\JsonApiController;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -12,6 +12,7 @@ use Tests\Api\V1\Users\Actions\IsEmailUniqueTest;
 
 class IsEmailUniqueController extends JsonApiController
 {
+
     /**
      * Determines if an email is unique.
      *
@@ -22,9 +23,8 @@ class IsEmailUniqueController extends JsonApiController
      */
     public function __invoke(Request $request)
     {
-        $user = User::where('email', $request->email)->select('id')->first();
-
-        if ($user !== null) {
+        $email = CacheUser::get(['email'])->where('email', $request->email)->first();
+        if ($email !== null) {
             return response([
                 'email'     => $request->email,
                 'is_unique' => false,
