@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheUserAuth implements CacheContract
 {
-
     public static $key = 'users:auth';
 
     /**

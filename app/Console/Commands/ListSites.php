@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ListSites extends BaseCommand
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -35,7 +34,6 @@ class ListSites extends BaseCommand
 
     /**
      * Execute the console command.
-     *
      */
     public function handle(): void
     {

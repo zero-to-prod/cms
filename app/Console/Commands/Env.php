@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class Env extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -33,11 +32,10 @@ class Env extends Command
 
     /**
      * Execute the console command.
-     *
      */
     public function handle(): void
     {
-        $key   = $this->argument('key');
+        $key = $this->argument('key');
         $value = $this->argument('value');
 
         EnvHelper::write($key, $value);

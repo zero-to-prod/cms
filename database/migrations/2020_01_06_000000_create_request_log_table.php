@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRequestLogTable extends Migration
 {
-
     protected const TABLE = 'request_log';
 
     public function up(): void

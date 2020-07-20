@@ -9,7 +9,6 @@ use Illuminate\Http\Response;
 
 class AuthLogController extends Controller
 {
-
     public function __invoke(Response $response)
     {
         return response(CacheAuthLog::get()->take(10), 200);

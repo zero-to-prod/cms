@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheUser implements CacheContract
 {
-
-    public static $key   = 'users';
+    public static $key = 'users';
     public static $limit = 100;
 
     /**

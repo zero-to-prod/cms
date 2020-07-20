@@ -30,7 +30,6 @@ use Laravel\Passport\Http\Middleware\CreateFreshApiToken;
 
 class Kernel extends HttpKernel
 {
-
     /**
      * The application's global HTTP middleware stack.
      *
@@ -46,7 +45,7 @@ class Kernel extends HttpKernel
             ValidatePostSize::class,
             TrimStrings::class,
             ConvertEmptyStringsToNull::class,
-            RequestLog::class
+            RequestLog::class,
         ];
     /**
      * The application's route middleware groups.
@@ -68,7 +67,7 @@ class Kernel extends HttpKernel
 
             'api' => [
                 'throttle:60,1',
-                SubstituteBindings::class
+                SubstituteBindings::class,
             ],
         ];
     /**
@@ -90,6 +89,6 @@ class Kernel extends HttpKernel
             'signed'           => ValidateSignature::class,
             'throttle'         => ThrottleRequests::class,
             'verified'         => EnsureEmailIsVerified::class,
-            'client'           => CheckClientCredentials::class
+            'client'           => CheckClientCredentials::class,
         ];
 }

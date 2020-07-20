@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Artisan;
 
 class AdminSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *

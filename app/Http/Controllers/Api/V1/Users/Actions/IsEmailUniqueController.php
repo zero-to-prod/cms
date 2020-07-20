@@ -12,7 +12,6 @@ use Tests\Api\V1\Users\Actions\IsEmailUniqueTest;
 
 class IsEmailUniqueController extends JsonApiController
 {
-
     /**
      * Determines if an email is unique.
      *

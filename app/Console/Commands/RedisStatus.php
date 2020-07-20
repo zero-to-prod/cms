@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class RedisStatus extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -32,7 +31,6 @@ class RedisStatus extends Command
 
     /**
      * Execute the console command.
-     *
      */
     public function handle()
     {

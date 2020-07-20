@@ -6,5 +6,4 @@ use App\Cache\User\CacheUserAdmin;
 
 class AdminHelper
 {
-
 }

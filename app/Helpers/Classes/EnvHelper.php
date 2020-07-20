@@ -4,7 +4,6 @@ namespace App\Helpers\Classes;
 
 class EnvHelper
 {
-
     /**
      * @param $key
      * @param $value

@@ -7,7 +7,6 @@ use Illuminate\Console\Command;
 
 class ListAdmin extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -34,7 +33,6 @@ class ListAdmin extends Command
 
     /**
      * Execute the console command.
-     *
      */
     public function handle(): void
     {

@@ -23,6 +23,6 @@ $factory->state(User::class, 'admin', static function (Faker $faker) {
         'name'     => config('admin.name'),
         'email'    => config('admin.email'),
         'password' => Hash::make(config('admin.password')),
-        'meta_id'  => 0
+        'meta_id'  => 0,
     ];
 });

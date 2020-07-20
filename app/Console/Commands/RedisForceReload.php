@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 class RedisForceReload extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -32,7 +31,6 @@ class RedisForceReload extends Command
 
     /**
      * Execute the console command.
-     *
      */
     public function handle()
     {

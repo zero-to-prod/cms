@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateStatusTable extends Migration
 {
-
     protected const TABLE = 'status';
 
     public function up(): void

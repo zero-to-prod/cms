@@ -7,7 +7,6 @@ use App\Events\UserRegistered;
 
 class UserRegisteredListener
 {
-
     /**
      * Create the event listener.
      *
@@ -26,6 +25,5 @@ class UserRegisteredListener
      */
     public function handle(UserRegistered $event): void
     {
-
     }
 }

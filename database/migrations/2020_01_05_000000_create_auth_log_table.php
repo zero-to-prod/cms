@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateAuthLogTable extends Migration
 {
-
     protected const TABLE = 'auth_log';
 
     public function up(): void
@@ -22,7 +21,7 @@ class CreateAuthLogTable extends Migration
             $table->boolean('secure')->nullable()->default(null);
             $table->char('user_agent')->nullable()->default(null);
             $table->char('fingerprint')->nullable()->default(null);
-            $table->ipAddress('ip_address')->nullable()->default(null);;
+            $table->ipAddress('ip_address')->nullable()->default(null);
             $table->timestamps();
         });
     }

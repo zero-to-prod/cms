@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ApiCanRegister
 {
-
     use HttpResponse;
 
     /**
@@ -23,9 +22,10 @@ class ApiCanRegister
     {
         if (config('api.API_CAN_REGISTER') !== '1') {
             $http_code = 401;
-            $response  = $this->status($http_code)
+            $response = $this->status($http_code)
                 ->title(config('api.can_register_denied_message'))
                 ->get();
+
             return response($response, $http_code);
         }
 

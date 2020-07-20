@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateMetaTable extends Migration
 {
-
     protected const TABLE = 'meta';
 
     public function up(): void

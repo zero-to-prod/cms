@@ -6,7 +6,6 @@ use App\Console\BaseCommand;
 
 class AppInstall extends BaseCommand
 {
-
     /**
      * The name and signature of the console command.
      *
