@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 

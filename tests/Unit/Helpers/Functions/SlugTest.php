@@ -11,6 +11,7 @@ class SlugTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
+
     /** @test */
     public function see_if_function_exits(): void
     {
