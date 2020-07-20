@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use App\Helpers\Classes\EnvHelper;
 use Illuminate\Console\Command;
 
-class Env extends Command
+class EnvWrite extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'env {key} {value}';
+    protected $signature = 'env:write {key} {value}';
     /**
      * The console command description.
      *
