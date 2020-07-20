@@ -4,7 +4,6 @@ namespace App\Helpers\Classes;
 
 class EnvHelper
 {
-
     public static $env_path;
 
     public function __construct()
@@ -18,9 +17,9 @@ class EnvHelper
      */
     public static function write($key, $value): void
     {
-        $path        = app()->environmentFilePath();
-        $escaped     = preg_quote('='.env($key), '/');
-        $pattern     = "/^{$key}{$escaped}/m";
+        $path = app()->environmentFilePath();
+        $escaped = preg_quote('='.env($key), '/');
+        $pattern = "/^{$key}{$escaped}/m";
         $replacement = "{$key}={$value}";
 
         if (preg_match($pattern, file_get_contents($path))) {
