@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 /** @see IsEmailUniqueController */
@@ -32,7 +33,7 @@ class IsEmailUniqueTest extends TestCase
     }
 
     /** @test */
-    public function email_is_not_unique()
+    public function email_is_not_unique(): void
     {
         $email = 'email@domain.com';
         factory(User::class)->create(['email' => $email]);

@@ -91,6 +91,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function boot()
     {
+        parent::boot();
         self::creating(static function ($user) {
             $meta = Meta::create(['user_id' => CacheUserAdmin::get()->id]);
             $user->meta_id = $meta->id;

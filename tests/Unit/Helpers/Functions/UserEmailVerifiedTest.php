@@ -3,13 +3,16 @@
 namespace Tests\Unit\Helpers\Functions;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /** @see user_email_verified() */
 class UserEmailVerifiedTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     /** @test */
     public function see_if_function_exits(): void

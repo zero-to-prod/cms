@@ -2,13 +2,16 @@
 
 namespace Tests\Unit\Helpers\Functions;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /** @see create_oauth_client() */
 class CreateOauthClientTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseMigrations;
+    use DatabaseTransactions;
 
     /** @test */
     public function see_if_function_exits(): void
