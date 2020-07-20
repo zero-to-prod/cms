@@ -7,7 +7,6 @@ use App\Models\User;
 
 class UserHelper
 {
-
     /**
      * Returns the user model from an email.
      *

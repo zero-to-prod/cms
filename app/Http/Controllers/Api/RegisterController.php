@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-
     /**
      * RegisterController constructor.
      */
@@ -32,9 +31,9 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'max:255'],
         ]);
 
-        $user           = new User();
-        $user->name     = $request->name;
-        $user->email    = $request->email;
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
 

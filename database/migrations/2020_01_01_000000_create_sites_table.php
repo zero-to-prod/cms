@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSitesTable extends Migration
 {
-
     protected const TABLE = 'sites';
 
     public function up(): void

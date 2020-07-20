@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class MetaHelper
 {
-
     public static function create(Request $request, Model $model, $parameters = null): MetaModel
     {
-        $table            = $model->getTable().'_id';
-        $meta             = new MetaModel();
-        $meta->user_id    = Auth::user();
-        $meta->$table     = $model->id;
-        $meta->note       = $request->note;
-        $meta->link       = $request->link;
+        $table = $model->getTable().'_id';
+        $meta = new MetaModel();
+        $meta->user_id = Auth::user();
+        $meta->$table = $model->id;
+        $meta->note = $request->note;
+        $meta->link = $request->link;
         $meta->save();
 
         return $meta;

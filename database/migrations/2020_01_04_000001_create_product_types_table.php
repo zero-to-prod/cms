@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductTypesTable extends Migration
 {
-
     protected const TABLE = 'product_types';
 
     public function up(): void

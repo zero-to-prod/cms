@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheAuthLog implements CacheContract
 {
-
-    public static $key   = 'auth_log';
+    public static $key = 'auth_log';
     public static $limit = 100;
 
     /**

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class MakeAdmin extends BaseCommand
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -47,7 +46,7 @@ class MakeAdmin extends BaseCommand
                 'name'     => config('admin.name'),
                 'email'    => config('admin.email'),
                 'password' => Hash::make(config('admin.password')),
-                'meta_id'  => 0
+                'meta_id'  => 0,
             ]);
             $this->info('Admin user created.');
             // @todo Make this code DRY.

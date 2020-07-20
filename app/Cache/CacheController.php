@@ -10,7 +10,6 @@ use App\Cache\User\CacheUserEmails;
 
 class CacheController
 {
-
     public static $keys
         = [
             'users'    => [
@@ -20,7 +19,7 @@ class CacheController
             ],
             'auth_log' => [
                 CacheAuthLog::class,
-            ]
+            ],
         ];
 
     /**

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class ApiCanLogin
 {
-
     use HttpResponse;
 
     /**
@@ -23,7 +22,7 @@ class ApiCanLogin
     {
         if (config('api.API_CAN_LOGIN') !== '1') {
             $http_code = 401;
-            $response  = $this->status($http_code)
+            $response = $this->status($http_code)
                 ->title(config('api.can_login_denied_message'))
                 ->get();
 

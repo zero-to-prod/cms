@@ -74,7 +74,7 @@ return [
         'auth-logs'     => AuthLog::class,
         'products'      => Product::class,
         'product_types' => ProductType::class,
-        'users'         => User::class
+        'users'         => User::class,
     ],
 
     /*

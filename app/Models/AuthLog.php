@@ -25,8 +25,7 @@ use Illuminate\Routing\Route;
  */
 class AuthLog extends Model
 {
-
-    protected $table    = 'auth_log';
+    protected $table = 'auth_log';
     protected $fillable = ['*'];
 
     /**

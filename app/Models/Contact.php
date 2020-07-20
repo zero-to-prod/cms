@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contact extends Model
 {
-
-    protected $table   = 'contacts';
+    protected $table = 'contacts';
     protected $fillable = ['*'];
 
     /**

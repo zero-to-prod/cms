@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class RequestLog
 {
-
     /**
      * Handle an incoming request.
      *

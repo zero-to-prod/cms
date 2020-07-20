@@ -8,7 +8,6 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-
     public function __invoke(Response $response)
     {
         return response(CacheUserAuth::get(), 200);

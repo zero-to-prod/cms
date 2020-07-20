@@ -8,7 +8,6 @@ use App\Models\AuthLog;
 
 class ApiLogoutListener
 {
-
     /**
      * Create the event listener.
      *
@@ -28,10 +27,10 @@ class ApiLogoutListener
      */
     public function handle(LogApiLogout $event): void
     {
-        $user              = CacheUserAuth::get();
-        $auth_log          = new AuthLog();
+        $user = CacheUserAuth::get();
+        $auth_log = new AuthLog();
         $auth_log->user_id = $user->id;
-        $auth_log->logout  = true;
+        $auth_log->logout = true;
         $auth_log->save();
     }
 }

@@ -12,7 +12,6 @@ use Illuminate\Queue\SerializesModels;
 
 class LogApiLogin
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -32,7 +31,7 @@ class LogApiLogin
      */
     public function __construct(User $user, Request $request)
     {
-        $this->user    = $user;
+        $this->user = $user;
         $this->request = $request;
     }
 

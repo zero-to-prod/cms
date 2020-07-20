@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLinksTable extends Migration
 {
-
     protected const TABLE = 'links';
 
     public function up(): void

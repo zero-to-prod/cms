@@ -4,7 +4,6 @@ namespace App\Helpers\Responses;
 
 trait HttpResponse
 {
-
     public $links;
     public $http_status;
     public $response_code;
@@ -18,7 +17,7 @@ trait HttpResponse
             'status' => $this->http_status,
             'code'   => $this->response_code,
             'title'  => $this->response_title,
-            'detail' => $this->response_detail
+            'detail' => $this->response_detail,
         ];
     }
 

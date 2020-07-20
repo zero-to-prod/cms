@@ -11,7 +11,6 @@ use Illuminate\Queue\SerializesModels;
 
 class ClearModelCache
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**

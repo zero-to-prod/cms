@@ -12,7 +12,6 @@ use Illuminate\Queue\SerializesModels;
 
 class RequestLog
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
@@ -32,7 +31,7 @@ class RequestLog
      */
     public function __construct(Request $request, $response)
     {
-        $this->request  = $request;
+        $this->request = $request;
         $this->response = $response;
     }
 

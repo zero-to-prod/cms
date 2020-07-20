@@ -28,7 +28,6 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-
     use Notifiable;
     use HasApiTokens;
 
@@ -93,9 +92,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function boot()
     {
         self::creating(static function ($user) {
-            $meta             = Meta::create(['user_id' => CacheUserAdmin::get()->id]);
-            $user->meta_id    = $meta->id;
-            $contact          = Contact::create(['user_id' => $user->id]);
+            $meta = Meta::create(['user_id' => CacheUserAdmin::get()->id]);
+            $user->meta_id = $meta->id;
+            $contact = Contact::create(['user_id' => $user->id]);
             $user->contact_id = $contact->id;
         });
         self::created(static function () {

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheUserAdmin implements CacheContract
 {
-
     public static $key = 'user:admin';
 
     /**

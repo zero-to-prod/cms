@@ -21,6 +21,6 @@ $factory->define(Meta::class, static function (Faker $faker) {
         'slug'        => $slug,
         'description' => $faker->sentence,
         'note'        => $faker->sentences(),
-        'link'        => $faker->url
+        'link'        => $faker->url,
     ];
 });

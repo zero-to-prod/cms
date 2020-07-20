@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class LogoutController
 {
-
     /**
      * @param  Request  $request
      *

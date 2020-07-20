@@ -7,7 +7,6 @@ use App\Models\User;
 
 class ListUsers extends BaseCommand
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -35,7 +34,6 @@ class ListUsers extends BaseCommand
 
     /**
      * Execute the console command.
-     *
      */
     public function handle(): void
     {
