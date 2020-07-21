@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Cache\CacheController;
 use App\Events\UserRegistered;
 
 class UserRegisteredListener

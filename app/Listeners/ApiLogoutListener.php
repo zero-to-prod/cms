@@ -2,7 +2,6 @@
 
 namespace App\Listeners;
 
-use App\Cache\User\CacheUserAuth;
 use App\Events\LogApiLogout;
 use App\Models\AuthLog;
 

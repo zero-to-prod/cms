@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Cache\User\CacheUserAuth;
 use App\Events\LogApiLogout;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class LogoutController
 {
+
     /**
      * @param  Request  $request
      *

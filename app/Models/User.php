@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Cache\User\CacheUser;
-use App\Cache\User\CacheUserAdmin;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
