@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Routing\Route;
@@ -25,7 +26,10 @@ use Illuminate\Routing\Route;
  */
 class AuthLog extends Model
 {
-    protected $table = 'auth_log';
+
+    use Cachable;
+
+    protected $table    = 'auth_log';
     protected $fillable = ['*'];
 
     /**
