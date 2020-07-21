@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class RequestLogTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -21,9 +20,9 @@ class RequestLogTest extends TestCase
      */
     public function user(): void
     {
-        $user     = factory(User::class)->create();
+        $user = factory(User::class)->create();
         $request_log = factory(RequestLog::class)->create(['user_id' => $user->id]);
-        $query    = RequestLog::where('id', $request_log->id)->with('user')->first();
+        $query = RequestLog::where('id', $request_log->id)->with('user')->first();
         self::assertInstanceOf(User::class, $query->user);
     }
 }

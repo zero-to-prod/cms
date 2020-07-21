@@ -26,7 +26,7 @@ class UserTest extends TestCase
     public function auth_log(): void
     {
         $auth_log = factory(AuthLog::class)->create();
-        $query    = User::where('id', $auth_log->user_id)->with('auth_log')->first();
+        $query = User::where('id', $auth_log->user_id)->with('auth_log')->first();
 
         self::assertInstanceOf(AuthLog::class, $query->auth_log);
     }
@@ -38,7 +38,7 @@ class UserTest extends TestCase
     public function request_log(): void
     {
         $request_log = factory(RequestLog::class)->create();
-        $query       = User::where('id', $request_log->user_id)->with('auth_log')->first();
+        $query = User::where('id', $request_log->user_id)->with('auth_log')->first();
 
         self::assertInstanceOf(RequestLog::class, $query->request_log);
     }
@@ -49,8 +49,8 @@ class UserTest extends TestCase
      */
     public function meta(): void
     {
-        $meta  = factory(Meta::class)->create(['user_id' => 3]);
-        $user  = factory(User::class)->create(['meta_id' => $meta->id]);
+        $meta = factory(Meta::class)->create(['user_id' => 3]);
+        $user = factory(User::class)->create(['meta_id' => $meta->id]);
         $query = User::where('id', $user->id)->with('meta')->first();
 
         self::assertInstanceOf(Meta::class, $query->meta);

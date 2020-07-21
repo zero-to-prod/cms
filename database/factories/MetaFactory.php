@@ -12,6 +12,7 @@ $factory->define(Meta::class, static function (Faker $faker) {
     $name = $faker->name;
     $slug = Str::slug($name);
     $user = factory(User::class)->create();
+
     return [
         'user_id'            => $user->id,
         'user_id_created_at' => $user->id,

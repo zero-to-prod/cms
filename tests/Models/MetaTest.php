@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class MetaTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -21,7 +20,7 @@ class MetaTest extends TestCase
      */
     public function site(): void
     {
-        $site  = factory(Site::class)->create();
+        $site = factory(Site::class)->create();
         $query = Site::where('id', $site->id)->with('meta')->first();
         self::assertInstanceOf(Meta::class, $query->meta);
     }
@@ -32,7 +31,7 @@ class MetaTest extends TestCase
      */
     public function user(): void
     {
-        $user  = factory(User::class)->create();
+        $user = factory(User::class)->create();
         $query = User::where('id', $user->id)->with('meta')->first();
         self::assertInstanceOf(Meta::class, $query->meta);
     }

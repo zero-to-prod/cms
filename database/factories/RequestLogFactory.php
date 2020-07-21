@@ -15,6 +15,6 @@ $factory->define(RequestLog::class, static function (Faker $faker) {
         'error'                       => 0,
         'error_message'               => $faker->randomHtml(),
         'created_at'                  => now(),
-        'updated_at'                  => null
+        'updated_at'                  => null,
     ];
 });

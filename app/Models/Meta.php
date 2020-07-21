@@ -48,5 +48,4 @@ class Meta extends Model
     {
         return $this->hasOne(Site::class);
     }
-
 }

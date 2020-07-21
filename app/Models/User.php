@@ -98,8 +98,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
         self::creating(static function ($user) {
-            $meta             = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
-            $user->meta_id    = $meta->id;
+            $meta = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
+            $user->meta_id = $meta->id;
             $contact = Contact::create(['user_id' => $user->id]);
             $user->contact_id = $contact->id;
         });
