@@ -10,7 +10,6 @@ use Tests\TestCase;
 /** @see IsNameUniqueController */
 class IsNameUniqueTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -19,7 +18,7 @@ class IsNameUniqueTest extends TestCase
     /** @test */
     public function name_is_unique()
     {
-        $name            = 'User 1';
+        $name = 'User 1';
         $request_payload = [
             'name' => $name,
         ];
