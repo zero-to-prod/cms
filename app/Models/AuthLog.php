@@ -23,6 +23,7 @@ use Illuminate\Routing\Route;
  * @property Route|mixed|object|string|null route
  * @property mixed|string fingerprint
  * @property mixed|string|null mac_address
+ * @method static where(string $string, \Illuminate\Database\Eloquent\Collection|Model $auth_log)
  */
 class AuthLog extends Model
 {

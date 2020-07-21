@@ -3,8 +3,6 @@
 /** @var Factory $factory */
 
 use App\Models\Meta;
-use App\Models\Site;
-use App\Models\Status;
 use App\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
@@ -15,13 +13,12 @@ $factory->define(Meta::class, static function (Faker $faker) {
     $slug = Str::slug($name);
 
     return [
-        'site_id'     => Site::class,
-        'user_id'     => User::class,
-        'status_id'   => Status::class,
-        'name'        => $name,
-        'slug'        => $slug,
-        'description' => $faker->sentence,
-        'note'        => $faker->sentences(),
-        'link'        => $faker->url,
+        'user_id'            => 1,
+        'user_id_created_at' => 1,
+        'user_id_updated_at' => null,
+        'user_id_deleted_at' => null,
+        'created_at'         => now(),
+        'updated_at'         => null,
+        'deleted_at'         => null
     ];
 });

@@ -57,6 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
 
     /**
+     * @see
      * @return BelongsTo
      */
     public function meta(): BelongsTo
@@ -82,6 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * @return HasOne
+     * @see UserTest::auth_log()
      */
     public function auth_log(): HasOne
     {

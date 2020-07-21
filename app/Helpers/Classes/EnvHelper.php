@@ -2,6 +2,8 @@
 
 namespace App\Helpers\Classes;
 
+use Tests\Helpers\Classes\EnvHelperTest;
+
 class EnvHelper
 {
     public static $env_path;
@@ -12,6 +14,7 @@ class EnvHelper
     }
 
     /**
+     * @see EnvHelperTest::can_write_to_env()
      * @param $key
      * @param $value
      */

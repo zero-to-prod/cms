@@ -7,17 +7,20 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-/** @see slug() */
+/** @see EnvHelper */
 class EnvHelperTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @see EnvHelper::write()
+     * @test
+     */
     public function can_write_to_env(): void
     {
         $key = 'TEST_VALUE';
-        $value = 'value';
+        $value = 'value1';
         EnvHelper::write($key, $value);
         self::assertEquals($value, env($key));
     }
