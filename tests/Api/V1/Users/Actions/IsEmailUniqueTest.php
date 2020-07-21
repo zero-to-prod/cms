@@ -11,7 +11,6 @@ use Tests\TestCase;
 /** @see IsEmailUniqueController */
 class IsEmailUniqueTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -20,7 +19,7 @@ class IsEmailUniqueTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        $email           = 'email@domain.com';
+        $email = 'email@domain.com';
         $request_payload = [
             'email' => $email,
         ];

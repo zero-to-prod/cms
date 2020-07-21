@@ -9,7 +9,6 @@ use Livewire\Component;
 
 class Register extends Component
 {
-
     /** @var string */
     public $name = '';
     /** @var string */
@@ -29,8 +28,8 @@ class Register extends Component
 
         $user = new User();
 
-        $user->email    = $this->email;
-        $user->name     = $this->name;
+        $user->email = $this->email;
+        $user->name = $this->name;
         $user->password = Hash::make($this->password);
 
         // $user->sendEmailVerificationNotification();
