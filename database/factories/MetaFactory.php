@@ -11,10 +11,9 @@ use Illuminate\Support\Str;
 $factory->define(Meta::class, static function (Faker $faker) {
     $name = $faker->name;
     $slug = Str::slug($name);
-
     return [
-        'user_id'            => 1,
-        'user_id_created_at' => 1,
+        'user_id'            => factory(User::class),
+        'user_id_created_at' => null,
         'user_id_updated_at' => null,
         'user_id_deleted_at' => null,
         'created_at'         => now(),

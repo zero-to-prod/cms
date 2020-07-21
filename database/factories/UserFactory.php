@@ -2,7 +2,6 @@
 
 /** @var Factory $factory */
 
-use App\Models\Contact;
 use App\Models\Meta;
 use App\Models\User;
 use Faker\Generator as Faker;
@@ -12,8 +11,8 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, static function (Faker $faker) {
     return [
-        'meta_id'           => factory(Meta::class),
-        'contact_id'        =>0,
+        'meta_id'           => 0,
+        'contact_id'        => 0,
         'name'              => $faker->name,
         'email'             => $faker->unique()->safeEmail,
         'email_verified_at' => now(),

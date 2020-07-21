@@ -35,8 +35,9 @@ class UserTest extends TestCase
      */
     public function meta(): void
     {
-        $meta = factory(Meta::class)->create();
-        $query = User::where('id', $meta->user_id)->with('meta')->first();
+        $meta  = factory(Meta::class)->create(['user_id' => 3]);
+        $user  = factory(User::class)->create(['meta_id' => $meta->id]);
+        $query = User::where('id', $user->id)->with('meta')->first();
 
         self::assertInstanceOf(Meta::class, $query->meta);
     }

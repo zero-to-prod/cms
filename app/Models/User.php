@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Tests\Feature\Models\UserTest;
 
 /**
  * @method static create(array $array)
@@ -56,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
 
     /**
-     * @see
+     * @see UserTest::meta()
      * @return BelongsTo
      */
     public function meta(): BelongsTo
