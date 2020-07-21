@@ -83,14 +83,23 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * @return HasOne
+     * @see UserTest::request_log()
+     */
+    public function request_log(): HasOne
+    {
+        return $this->hasOne(RequestLog::class);
+    }
+
+    /**
      * Boots the model.
      */
     public static function boot(): void
     {
         parent::boot();
         self::creating(static function ($user) {
-            $meta = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
-            $user->meta_id = $meta->id;
+            $meta             = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
+            $user->meta_id    = $meta->id;
             $contact = Contact::create(['user_id' => $user->id]);
             $user->contact_id = $contact->id;
         });

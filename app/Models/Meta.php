@@ -44,32 +44,9 @@ class Meta extends Model
     /**
      * @return HasOne
      */
-    public function product(): HasOne
+    public function site(): HasOne
     {
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Site::class);
     }
 
-    /**
-     * @return HasOne
-     */
-    public function product_type(): HasOne
-    {
-        return $this->hasOne(ProductType::class);
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function contact(): HasOne
-    {
-        return $this->hasOne(Contact::class);
-    }
-
-    /**
-     * @return HasOne
-     */
-    public function status(): HasOne
-    {
-        return $this->hasOne(Status::class);
-    }
 }

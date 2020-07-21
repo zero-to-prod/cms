@@ -6,6 +6,7 @@ use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Routing\Route;
+use Tests\Models\AuthLogTest;
 
 /**
  * @property mixed user_id
@@ -33,6 +34,7 @@ class AuthLog extends Model
     protected $fillable = ['*'];
 
     /**
+     * @see AuthLogTest
      * @return BelongsTo
      */
     public function user(): BelongsTo

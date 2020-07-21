@@ -16,7 +16,7 @@ $factory->define(AuthLog::class, static function (Faker $faker) {
         'logout'      => null,
         'url'         => $url,
         'full_url'    => $url,
-        'path'        => 'a/fake/path',
+        'path'        => '/a/fake/path',
         'secure'      => 0,
         'user_agent'  => $faker->userAgent,
         'fingerprint' => Hash::make('secret'),

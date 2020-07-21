@@ -16,6 +16,14 @@ class CreateMetaTable extends Migration
             $table->bigInteger('user_id_created_at')->nullable();
             $table->bigInteger('user_id_updated_at')->nullable();
             $table->bigInteger('user_id_deleted_at')->nullable();
+            $table->char('name')->nullable();
+            $table->char('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->text('note')->nullable();
+            $table->text('help')->nullable();
+            $table->char('link')->nullable();
+            $table->char('color')->nullable();
+            // @todo Add Images, Tags, Status pivot tables
             $table->timestamps();
             $table->softDeletes();
         });
