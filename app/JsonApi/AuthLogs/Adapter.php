@@ -2,6 +2,7 @@
 
 namespace App\JsonApi\AuthLogs;
 
+use App\Models\AuthLog;
 use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,7 +31,7 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\Models\AuthLog(), $paging);
+        parent::__construct(new AuthLog(), $paging);
     }
 
     /**

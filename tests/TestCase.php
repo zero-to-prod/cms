@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Artisan;
 
 abstract class TestCase extends BaseTestCase
 {
+
     use CreatesApplication;
     use DatabaseMigrations;
     use DatabaseTransactions;

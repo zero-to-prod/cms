@@ -16,7 +16,7 @@ class LogoutController
      */
     public function __invoke(Request $request)
     {
-        CacheUserAuth::get()->tokens()->each(static function ($token, $key) {
+        auth()->user()->tokens()->each(static function ($token, $key) {
             $token->delete();
         });
         event(new LogApiLogout());

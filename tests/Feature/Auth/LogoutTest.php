@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class LogoutTest extends TestCase
 {
+
     use RefreshDatabase;
 
     /** @test */

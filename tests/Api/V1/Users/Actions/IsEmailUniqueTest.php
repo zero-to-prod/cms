@@ -6,12 +6,12 @@ use App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 /** @see IsEmailUniqueController */
 class IsEmailUniqueTest extends TestCase
 {
+
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -20,7 +20,7 @@ class IsEmailUniqueTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        $email = 'email@domain.com';
+        $email           = 'email@domain.com';
         $request_payload = [
             'email' => $email,
         ];

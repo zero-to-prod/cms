@@ -27,9 +27,8 @@ class ApiLogoutListener
      */
     public function handle(LogApiLogout $event): void
     {
-        $user = CacheUserAuth::get();
         $auth_log = new AuthLog();
-        $auth_log->user_id = $user->id;
+        $auth_log->user_id = auth()->user()->id;
         $auth_log->logout = true;
         $auth_log->save();
     }

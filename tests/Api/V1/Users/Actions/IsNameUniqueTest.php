@@ -5,11 +5,13 @@ namespace Tests\Api\V1\Users\Actions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 /** @see IsNameUniqueController */
 class IsNameUniqueTest extends TestCase
 {
+
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -18,7 +20,7 @@ class IsNameUniqueTest extends TestCase
     /** @test */
     public function name_is_unique()
     {
-        $name = 'User 1';
+        $name            = 'User 1';
         $request_payload = [
             'name' => $name,
         ];

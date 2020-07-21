@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Cache\User\CacheUser;
 use App\Events\LogApiLogin;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
+use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
@@ -14,6 +14,7 @@ use Psr\Http\Message\StreamInterface;
 
 class LoginController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware(ApiCanLogin::class);
@@ -39,7 +40,7 @@ class LoginController extends Controller
             ]);
 
             if (config('api.API_AUTH_LOG_ENABLED')) {
-                $user = CacheUser::get()->where('email', $request->email)->first();
+                $user = User::where('email', $request->email)->first();
                 event(new LogApiLogin($user, $request));
             }
 

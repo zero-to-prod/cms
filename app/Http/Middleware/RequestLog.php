@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Events\RequestLog as RequestLogEvent;
 use Closure;
 use Illuminate\Http\Request;
 
 class RequestLog
 {
+
     /**
      * Handle an incoming request.
      *
@@ -18,10 +18,11 @@ class RequestLog
      */
     public function handle($request, Closure $next)
     {
+        $response = $next($request);
         if (config('app.REQUEST_LOG_ENABLED') === '1') {
-            event(new RequestLogEvent($request, $next($request)));
+            event(new \App\Events\RequestLog($request, $response));
         }
 
-        return $next($request);
+        return $response;
     }
 }
