@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Site extends Model
 {
-
     use Cachable;
 
     protected $fillable = ['*'];
