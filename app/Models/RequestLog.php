@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,6 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RequestLog extends Model
 {
-    protected $table = 'request_log';
+
+    use Cachable;
+
+    protected $table    = 'request_log';
     protected $fillable = ['*'];
 }

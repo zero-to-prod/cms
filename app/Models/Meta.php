@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -11,9 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Meta extends Model
 {
-    protected $fillable = ['*'];
 
-    protected $table = 'meta';
+    use Cachable;
+
+    protected $fillable = ['*'];
+    protected $table    = 'meta';
     /**
      * @var mixed
      */

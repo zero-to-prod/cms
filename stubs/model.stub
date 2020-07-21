@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace {{ namespace }};
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
-class Site extends Model
+class {{ class }} extends Model
 {
 
     use Cachable;
 
     protected $fillable = ['*'];
+
+
 }

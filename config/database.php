@@ -147,6 +147,15 @@ return [
             'read_write_timeout' => 60,
         ],
 
+        'model-cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', '6379'),
+            'database' => 1,
+            'read_write_timeout' => 60,
+        ],
+
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),

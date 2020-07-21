@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contact extends Model
 {
-    protected $table = 'contacts';
+
+    use Cachable;
+
+    protected $table    = 'contacts';
     protected $fillable = ['*'];
 
     /**
