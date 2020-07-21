@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -66,15 +65,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return BelongsToMany
-     */
-    public function site(): BelongsToMany
-    {
-        return $this->belongsToMany(Site::class);
-    }
-
-    /**
      * @return BelongsTo
+     * @see UserTest::contact()
      */
     public function contact(): BelongsTo
     {
@@ -90,13 +82,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(AuthLog::class);
     }
 
-    public static function boot()
+    /**
+     * Boots the model
+     */
+    public static function boot(): void
     {
         parent::boot();
         self::creating(static function ($user) {
-            $meta = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
-            $user->meta_id = $meta->id;
-            $contact = Contact::create(['user_id' => $user->id]);
+            $meta             = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
+            $user->meta_id    = $meta->id;
+            $contact          = Contact::create(['user_id' => $user->id]);
             $user->contact_id = $contact->id;
         });
     }

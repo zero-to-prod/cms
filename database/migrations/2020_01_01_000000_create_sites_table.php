@@ -13,8 +13,6 @@ class CreateSitesTable extends Migration
         Schema::create(self::TABLE, static function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('meta_id');
-            $table->boolean('api_can_login')->default(1)->comment('Allows an api user to login.');
-            $table->boolean('api_can_register')->default(0)->comment('Allows an api user to register.');
             $table->timestamps();
             $table->softDeletes();
         });

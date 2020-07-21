@@ -2,9 +2,10 @@
 
 /** @noinspection PhpPossiblePolymorphicInvocationInspection */
 
-namespace Tests\Feature\Models;
+namespace Tests\Models;
 
 use App\Models\AuthLog;
+use App\Models\Contact;
 use App\Models\Meta;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -40,5 +41,17 @@ class UserTest extends TestCase
         $query = User::where('id', $user->id)->with('meta')->first();
 
         self::assertInstanceOf(Meta::class, $query->meta);
+    }
+
+    /**
+     * @see User::contact()
+     * @test
+     */
+    public function contact(): void
+    {
+        $contact = factory(Contact::class)->create();
+        $query   = User::where('id', $contact->user_id)->with('contact')->first();
+
+        self::assertInstanceOf(Contact::class, $query->contact);
     }
 }

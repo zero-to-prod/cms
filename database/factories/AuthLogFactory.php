@@ -18,7 +18,7 @@ $factory->define(AuthLog::class, static function (Faker $faker) {
         'full_url'    => $url,
         'path'        => 'a/fake/path',
         'secure'      => 0,
-        'user_agent'  => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+        'user_agent'  => $faker->userAgent,
         'fingerprint' => Hash::make('secret'),
         'ip_address'  => $faker->ipv4,
         'created_at'  => time(),
