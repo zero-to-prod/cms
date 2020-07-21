@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /** @test */
