@@ -22,14 +22,14 @@ $factory->define(AuthLog::class, static function (Faker $faker) {
         'fingerprint' => Hash::make('secret'),
         'ip_address'  => $faker->ipv4,
         'created_at'  => time(),
-        'updated_at'  => null
+        'updated_at'  => null,
     ];
 });
 
 $factory->state(AuthLog::class, 'login', [
-    'login' => 1
+    'login' => 1,
 ]);
 
 $factory->state(AuthLog::class, 'logout', [
-    'logout' => 1
+    'logout' => 1,
 ]);

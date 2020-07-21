@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductType extends Model
 {
-
     use Cachable;
 
     protected $fillable = ['*'];

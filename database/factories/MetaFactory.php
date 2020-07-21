@@ -19,6 +19,6 @@ $factory->define(Meta::class, static function (Faker $faker) {
         'user_id_deleted_at' => null,
         'created_at'         => now(),
         'updated_at'         => null,
-        'deleted_at'         => null
+        'deleted_at'         => null,
     ];
 });

@@ -27,10 +27,9 @@ use Illuminate\Routing\Route;
  */
 class AuthLog extends Model
 {
-
     use Cachable;
 
-    protected $table    = 'auth_log';
+    protected $table = 'auth_log';
     protected $fillable = ['*'];
 
     /**

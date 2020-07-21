@@ -1,4 +1,6 @@
-<?php /** @noinspection PhpPossiblePolymorphicInvocationInspection */
+<?php
+
+/** @noinspection PhpPossiblePolymorphicInvocationInspection */
 
 namespace Tests\Feature\Models;
 
@@ -12,7 +14,6 @@ use Tests\TestCase;
 /** @see User */
 class UserTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -23,10 +24,11 @@ class UserTest extends TestCase
     public function auth_log(): void
     {
         $auth_log = factory(AuthLog::class)->create();
-        $query    = User::where('id', $auth_log->user_id)->with('auth_log')->first();
+        $query = User::where('id', $auth_log->user_id)->with('auth_log')->first();
 
         self::assertInstanceOf(AuthLog::class, $query->auth_log);
     }
+
     /**
      * @see User::meta()
      * @test
@@ -34,7 +36,7 @@ class UserTest extends TestCase
     public function meta(): void
     {
         $meta = factory(Meta::class)->create();
-        $query    = User::where('id', $meta->user_id)->with('meta')->first();
+        $query = User::where('id', $meta->user_id)->with('meta')->first();
 
         self::assertInstanceOf(Meta::class, $query->meta);
     }
