@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SiteUser extends Model
 {
-
     use Cachable;
 
-    protected $table    = 'site_user';
+    protected $table = 'site_user';
     protected $fillable = ['*'];
 }

@@ -9,10 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Contact extends Model
 {
-
     use Cachable;
 
-    protected $table    = 'contacts';
+    protected $table = 'contacts';
     protected $fillable = ['*'];
 
     /**

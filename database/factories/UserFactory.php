@@ -21,7 +21,7 @@ $factory->define(User::class, static function (Faker $faker) {
         'remember_token'    => Str::random(10),
         'created_at'        => now(),
         'updated_at'        => null,
-        'deleted_at'        => null
+        'deleted_at'        => null,
     ];
 });
 

@@ -12,11 +12,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Meta extends Model
 {
-
     use Cachable;
 
     protected $fillable = ['*'];
-    protected $table    = 'meta';
+    protected $table = 'meta';
     /**
      * @var mixed
      */
