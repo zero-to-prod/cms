@@ -8,16 +8,14 @@ JsonApi::register('default')->routes(static function ($api) {
         Route::get('/ping/authorized', 'PingController');
         Route::get('/ping', 'PingController')->withoutMiddleware('auth:api');
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
+        /** @see \App\Http\Controllers\Api\LoginController */
+        /** @see \Tests\Http\Controllers\Api\LoginControllerTest */
         Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
         Route::post('/logout', 'LogoutController');
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */
             /** @see \Tests\Api\V1\Users\Actions\IsEmailUniqueTest */
             Route::post('/users/actions/is-email-unique', 'IsEmailUniqueController')->withoutMiddleware('auth:api');
-
-            /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsNameUniqueController */
-            /** @see \Tests\Api\V1\Users\Actions\IsNameUniqueTest */
-            Route::post('/users/actions/is-name-unique', 'IsNameUniqueController')->withoutMiddleware('auth:api');
         });
 
         Route::group(['namespace' => 'V1'], static function () {

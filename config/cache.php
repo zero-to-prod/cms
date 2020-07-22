@@ -77,7 +77,7 @@ return [
             'connection' => 'cache',
         ],
 
-        'model' => [
+        'redis2' => [
             'driver' => 'redis',
             'connection' => 'model-cache',
         ],

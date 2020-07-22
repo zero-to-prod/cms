@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * @property mixed name
  * @property mixed id
+ * @method static create(array $array)
  */
 class Meta extends Model
 {

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\UserRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanRegister;
 use App\Models\User;

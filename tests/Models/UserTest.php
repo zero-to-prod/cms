@@ -38,9 +38,9 @@ class UserTest extends TestCase
     public function request_log(): void
     {
         $request_log = factory(RequestLog::class)->create();
-        $query = User::where('id', $request_log->user_id)->with('auth_log')->first();
+        $query = User::where('id', $request_log->user_id)->with('request_log')->first();
 
-        self::assertInstanceOf(RequestLog::class, $query->request_log);
+        self::assertInstanceOf(RequestLog::class, $query->request_log[0]);
     }
 
     /**

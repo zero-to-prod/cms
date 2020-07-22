@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\LogApiLogin;
+use App\Helpers\Classes\ApiHelper;
+use App\Helpers\Classes\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
-use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
@@ -23,12 +24,13 @@ class LoginController extends Controller
      * @param  Request  $request
      *
      * @return JsonResponse|StreamInterface
+     * @see LoginControllerTest::api_can_get_access_and_refresh_token()
      */
     public function __invoke(Request $request)
     {
         $http = new Client;
         try {
-            $response = $http->post(config('oauth.uri_token'), [
+            $response = $http->post('http://cms.test/oauth/token', [
                 'form_params' => [
                     'grant_type'    => 'password',
                     'client_id'     => $request->client_id,
@@ -38,8 +40,8 @@ class LoginController extends Controller
                 ],
             ]);
 
-            if (config('api.API_AUTH_LOG_ENABLED')) {
-                $user = User::where('email', $request->email)->first();
+            if (ApiHelper::authLogEnabled()) {
+                $user = UserHelper::fromEmail($request->email);
                 event(new LogApiLogin($user, $request));
             }
 

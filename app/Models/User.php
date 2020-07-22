@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use Tests\Feature\Models\UserTest;
 
 /**
  * @method static create(array $array)
@@ -26,8 +27,10 @@ use Tests\Feature\Models\UserTest;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+
     use Notifiable;
     use HasApiTokens;
+    use Cachable;
 
     protected $table = 'users';
     /**
@@ -83,12 +86,12 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @return HasOne
+     * @return HasMany
      * @see UserTest::request_log()
      */
-    public function request_log(): HasOne
+    public function request_log(): HasMany
     {
-        return $this->hasOne(RequestLog::class);
+        return $this->hasMany(RequestLog::class);
     }
 
     /**
@@ -98,9 +101,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
         self::creating(static function ($user) {
-            $meta = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
-            $user->meta_id = $meta->id;
-            $contact = Contact::create(['user_id' => $user->id]);
+            $meta             = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
+            $user->meta_id    = $meta->id;
+            $contact          = Contact::create(['user_id' => $user->id]);
             $user->contact_id = $contact->id;
         });
     }

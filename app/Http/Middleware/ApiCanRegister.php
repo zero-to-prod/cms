@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Helpers\Classes\ApiHelper;
 use App\Helpers\Responses\HttpResponse;
 use Closure;
 use Illuminate\Http\Request;
@@ -20,13 +21,13 @@ class ApiCanRegister
      */
     public function handle($request, Closure $next)
     {
-        if (config('api.API_CAN_REGISTER') !== '1') {
+        if (ApiHelper::cannotRegister()) {
             $http_code = 401;
             $response = $this->status($http_code)
                 ->title(config('api.can_register_denied_message'))
                 ->get();
 
-            return response($response, $http_code);
+            return response(['errors' => [$response]], $http_code);
         }
 
         return $next($request);

@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'uri_token' => env('OAUTH_URI_TOKEN'),
+    'token_url' => env('OAUTH_TOKEN_URL'),
 ];
