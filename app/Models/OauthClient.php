@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class OauthClient extends Model
 {
-
     use Cachable;
 
     protected $fillable = ['*'];

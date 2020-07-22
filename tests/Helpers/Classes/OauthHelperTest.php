@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class OauthHelperTest extends TestCase
 {
-
     /**
      * @test
      * @see OauthHelper::getTokenUrl()
