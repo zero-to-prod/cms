@@ -6,7 +6,6 @@ use Tests\Helpers\Classes\OauthHelperTest;
 
 class OauthHelper
 {
-
     /**
      * @return mixed
      * @see OauthHelperTest::getTokenUrl()
