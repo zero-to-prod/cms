@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\RequestLog;
+use App\Events\RequestLogEvent;
 use App\Models\RequestLog as RequestLogModel;
 use App\Models\User;
 
@@ -21,11 +21,11 @@ class RequestLogListener
     /**
      * Handle the event.
      *
-     * @param  RequestLog  $event
+     * @param  RequestLogEvent  $event
      *
      * @return void
      */
-    public function handle(RequestLog $event): void
+    public function handle(RequestLogEvent $event): void
     {
         $user = auth()->user();
         $request_log = new \App\Models\RequestLog();

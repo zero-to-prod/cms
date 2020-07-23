@@ -5,27 +5,34 @@ namespace App\Events;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Queue\SerializesModels;
 
-class ClearModelCache
+class RequestLogEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var Model
+     * @var Request
      */
-    private $model;
+    public $request;
+    /**
+     * @var Response
+     */
+    public $response;
 
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param  Request  $request
+     * @param  Response  $response
      */
-    public function __construct(Model $model)
+    public function __construct(Request $request, $response)
     {
-        $this->model = $model;
+        $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -36,13 +43,5 @@ class ClearModelCache
     public function broadcastOn()
     {
         return new PrivateChannel('channel-name');
-    }
-
-    /**
-     * @return Model
-     */
-    public function getModel()
-    {
-        return $this->model;
     }
 }

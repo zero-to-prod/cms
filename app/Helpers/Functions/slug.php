@@ -10,7 +10,7 @@ if (! function_exists('slug')) {
      *
      * @return string
      *
-     * @see \Tests\Unit\Helpers\Functions\SlugTest
+     * @see
      */
     function slug(string $string)
     {

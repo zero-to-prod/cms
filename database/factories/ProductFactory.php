@@ -2,6 +2,7 @@
 
 /** @var Factory $factory */
 
+use App\Helpers\Helpers;
 use App\Models\Product;
 use App\Models\ProductType;
 use Faker\Generator as Faker;
@@ -12,7 +13,7 @@ $factory->define(Product::class, static function (Faker $faker) {
 
     return [
         'name'            => $name,
-        'slug'            => slug($name),
+        'slug'            => Helpers::slug($name),
         'description'     => $faker->sentence,
         'product_type_id' => factory(ProductType::class),
     ];

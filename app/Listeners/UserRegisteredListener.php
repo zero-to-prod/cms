@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistered;
+use App\Events\UserRegisteredEvent;
 
 class UserRegisteredListener
 {
@@ -18,11 +18,11 @@ class UserRegisteredListener
     /**
      * Handle the event.
      *
-     * @param  UserRegistered  $event
+     * @param  UserRegisteredEvent  $event
      *
      * @return void
      */
-    public function handle(UserRegistered $event): void
+    public function handle(UserRegisteredEvent $event): void
     {
     }
 }

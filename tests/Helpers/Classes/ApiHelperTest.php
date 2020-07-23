@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers\Classes;
 
-use App\Helpers\Classes\ApiHelper;
+use App\Helpers\ApiHelper;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 

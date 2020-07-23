@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Events\LogApiLogin;
+use App\Events\ApiLoginEvent;
 use App\Helpers\Classes\ApiHelper;
 use App\Helpers\Classes\UserHelper;
 use App\Http\Controllers\Controller;
@@ -42,7 +42,7 @@ class LoginController extends Controller
 
             if (ApiHelper::authLogEnabled()) {
                 $user = UserHelper::fromEmail($request->email);
-                event(new LogApiLogin($user, $request));
+                event(new ApiLoginEvent($user, $request));
             }
 
             return $response->getBody();

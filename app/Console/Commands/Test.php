@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
-use App\Events\UserRegistered;
+use App\Events\UserRegisteredEvent;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -42,6 +42,6 @@ class Test extends BaseCommand
     public function handle()
     {
         echo 'Test command fired.'.PHP_EOL;
-        broadcast(new UserRegistered());
+        broadcast(new UserRegisteredEvent());
     }
 }
