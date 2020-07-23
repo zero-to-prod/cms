@@ -7,7 +7,6 @@ use Laravel\Passport\ClientRepository;
 
 class OauthHelper
 {
-
     /**
      * @return mixed
      * @see OauthHelperTest::getTokenUrl()
@@ -46,7 +45,7 @@ class OauthHelper
     }
 
     /**
-     * Creates a Password Grant Client
+     * Creates a Password Grant Client.
      *
      * @param  string  $name
      *

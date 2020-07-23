@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class LogoutControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
