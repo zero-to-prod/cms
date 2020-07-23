@@ -13,6 +13,7 @@ class AuthLogHelper
      * @param  Request  $request
      *
      * @return AuthLog
+     * @todo Make test.
      */
     public static function login($user_id, Request $request): AuthLog
     {
@@ -25,6 +26,7 @@ class AuthLogHelper
      * @param  bool  $login
      *
      * @return AuthLog
+     * @todo Make test.
      */
     public static function create($user_id, Request $request, $login = true): AuthLog
     {
@@ -48,6 +50,7 @@ class AuthLogHelper
      * @param  Request  $request
      *
      * @return AuthLog
+     * @todo Make test.
      */
     public static function logout($user_id, Request $request): AuthLog
     {
