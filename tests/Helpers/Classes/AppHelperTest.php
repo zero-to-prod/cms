@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class AppHelperTest extends TestCase
 {
-
     protected const REQUEST_LOG_ENABLED = 'app.REQUEST_LOG_ENABLED';
 
     /**
@@ -17,7 +16,7 @@ class AppHelperTest extends TestCase
      */
     public function requestLogEnabled(): void
     {
-        $key   = self::REQUEST_LOG_ENABLED;
+        $key = self::REQUEST_LOG_ENABLED;
         $value = '1';
         Config::set($key, $value);
         self::assertTrue(AppHelper::requestLogEnabled());
@@ -29,7 +28,7 @@ class AppHelperTest extends TestCase
      */
     public function requestLogNotEnabled(): void
     {
-        $key   = self::REQUEST_LOG_ENABLED;
+        $key = self::REQUEST_LOG_ENABLED;
         $value = '0';
         Config::set($key, $value);
         self::assertTrue(AppHelper::requestLogNotEnabled());

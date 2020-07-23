@@ -6,7 +6,6 @@ use Illuminate\Support\Str;
 
 class Helpers
 {
-
     /**
      * Generates a slug.
      *
@@ -30,7 +29,7 @@ class Helpers
      * @todo Refactor test.
      * @see
      */
-    function slug_uri(string $string)
+    public function slug_uri(string $string)
     {
         return Str::slug($string, config('slug.separator_uri'));
     }

@@ -6,7 +6,6 @@ use Tests\Helpers\Classes\AppHelperTest;
 
 class AppHelper
 {
-
     /**
      * Determines if the request log is enabled.
      *

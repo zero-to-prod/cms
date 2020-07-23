@@ -7,7 +7,6 @@ use Tests\Helpers\Classes\OauthHelperTest;
 
 class OauthHelper
 {
-
     /**
      * @return mixed
      * @see OauthHelperTest::getTokenUrl()
@@ -30,7 +29,7 @@ class OauthHelper
      *
      * @see
      */
-    function create_client(
+    public function create_client(
         $name,
         $userId = '',
         $redirect = '',
