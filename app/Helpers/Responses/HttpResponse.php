@@ -19,7 +19,7 @@ trait HttpResponse
             'code'   => $this->response_code,
             'title'  => $this->response_title,
             'detail' => $this->response_detail,
-            'data'   => $this->response_data
+            'data'   => $this->response_data,
         ];
     }
 

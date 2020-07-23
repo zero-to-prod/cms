@@ -13,7 +13,6 @@ use Illuminate\Http\Response;
 
 class LogoutController extends Controller
 {
-
     /**
      * @param  Request  $request
      *
@@ -27,9 +26,9 @@ class LogoutController extends Controller
         });
         event(new ApiLogoutEvent($user, $request));
 
-        $auth_log     = AuthLog::where('user_id', $user->id)->with('user')->latest()->first();
-        $title    = config('api.logout_message');
-        $status   = 200;
+        $auth_log = AuthLog::where('user_id', $user->id)->with('user')->latest()->first();
+        $title = config('api.logout_message');
+        $status = 200;
         $response = $this->title($title)->status($status)->data($auth_log)->get();
 
         return response($response, $status);

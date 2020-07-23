@@ -7,7 +7,6 @@ use Tests\App\Helpers\HelperTest;
 
 class Helper
 {
-
     /**
      * Generates a slug.
      *
@@ -33,5 +32,4 @@ class Helper
     {
         return Str::slug($string, config('slug.separator_link'));
     }
-
 }

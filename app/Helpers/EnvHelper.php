@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-
 class EnvHelper
 {
     public static $env_path;
