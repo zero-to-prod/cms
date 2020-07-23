@@ -13,7 +13,6 @@ use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
@@ -25,8 +24,8 @@ class LoginControllerTest extends TestCase
     {
         OauthHelper::createPasswordGrantClient('client', 'users');
         $password = 'secret';
-        $user     = factory(User::class)->create(['password' => Hash::make($password)]);
-        $client   = OauthClient::where('password_client', 1)->first();
+        $user = factory(User::class)->create(['password' => Hash::make($password)]);
+        $client = OauthClient::where('password_client', 1)->first();
         $this->post('/oauth/token', [
             'grant_type'    => 'password',
             'client_id'     => $client->id,

@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class OauthHelperTest extends TestCase
 {
-
     use DatabaseTransactions;
     use DatabaseMigrations;
 
@@ -29,7 +28,7 @@ class OauthHelperTest extends TestCase
      */
     public function createPasswordGrantClient(): void
     {
-        $name     = 'Grant Client';
+        $name = 'Grant Client';
         $provider = 'provider';
         self::assertEquals(0, OauthHelper::createPasswordGrantClient($name, $provider));
         $oauth_client = OauthClient::where('name', $name)->first();
@@ -44,13 +43,13 @@ class OauthHelperTest extends TestCase
      */
     public function create(): void
     {
-        $name           = 'Test Client';
-        $user_id        = 100;
-        $redirect       = 'url.domain';
-        $provider       = 'provider';
+        $name = 'Test Client';
+        $user_id = 100;
+        $redirect = 'url.domain';
+        $provider = 'provider';
         $personalAccess = true;
-        $password       = true;
-        $confidential   = true;
+        $password = true;
+        $confidential = true;
 
         $oauth_client = OauthHelper::create($name, $user_id, $redirect, $provider, $personalAccess, $password,
             $confidential);
