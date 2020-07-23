@@ -2,11 +2,12 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\ClientRepository;
-use Tests\Helpers\Classes\OauthHelperTest;
 
 class OauthHelper
 {
+
     /**
      * @return mixed
      * @see OauthHelperTest::getTokenUrl()
@@ -27,9 +28,9 @@ class OauthHelper
      *
      * @return mixed
      *
-     * @see
+     * @see OauthHelperTest::create()
      */
-    public function create_client(
+    public static function create(
         $name,
         $userId = '',
         $redirect = '',
@@ -42,5 +43,22 @@ class OauthHelper
 
         return $ClientRepository->create($userId, $name, $redirect, $provider, $personalAccess, $password,
             $confidential);
+    }
+
+    /**
+     * Creates a Password Grant Client
+     *
+     * @param  string  $name
+     *
+     * @param  string  $provider
+     *
+     * @return int
+     * @see OauthHelperTest::createPasswordGrantClient()
+     */
+    public static function createPasswordGrantClient(
+        string $name = 'Password Grant Client',
+        string $provider = 'users'
+    ): int {
+        return Artisan::call("passport:client --password --name='$name' --provider='$provider'");
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\ApiLogoutEvent;
-use App\Models\AuthLog;
+use App\Helpers\AuthLogHelper;
 
 class ApiLogoutListener
 {
@@ -26,9 +26,6 @@ class ApiLogoutListener
      */
     public function handle(ApiLogoutEvent $event): void
     {
-        $auth_log = new AuthLog();
-        $auth_log->user_id = auth()->user()->id;
-        $auth_log->logout = true;
-        $auth_log->save();
+        AuthLogHelper::logout($event->user->id, $event->request);
     }
 }

@@ -9,6 +9,7 @@ trait HttpResponse
     public $response_code;
     public $response_title;
     public $response_detail;
+    public $response_data;
 
     public function get(): array
     {
@@ -18,6 +19,7 @@ trait HttpResponse
             'code'   => $this->response_code,
             'title'  => $this->response_title,
             'detail' => $this->response_detail,
+            'data'   => $this->response_data
         ];
     }
 
@@ -52,6 +54,13 @@ trait HttpResponse
     public function detail($detail = '')
     {
         $this->response_detail = $detail;
+
+        return $this;
+    }
+
+    public function data($data = [])
+    {
+        $this->response_data = $data;
 
         return $this;
     }

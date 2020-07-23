@@ -9,8 +9,9 @@ JsonApi::register('default')->routes(static function ($api) {
         Route::get('/ping', 'PingController')->withoutMiddleware('auth:api');
         Route::post('/register', 'RegisterController')->withoutMiddleware('auth:api');
         /** @see \App\Http\Controllers\Api\LoginController */
-        /** @see \Tests\Http\Controllers\Api\LoginControllerTest */
+        /** @see \Tests\Api\V1\LoginControllerTest */
         Route::post('/login', 'LoginController')->withoutMiddleware('auth:api');
+        /** @see \App\Http\Controllers\Api\LogoutController */
         Route::post('/logout', 'LogoutController');
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\ApiLoginEvent;
-use App\Helpers\Classes\ApiHelper;
-use App\Helpers\Classes\UserHelper;
+use App\Helpers\ApiHelper;
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
 use GuzzleHttp\Client;

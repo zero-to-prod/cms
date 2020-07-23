@@ -4,12 +4,7 @@
             "database/seeds",
             "database/factories"
         ],
-        "files": [
-            "app/Helpers/Functions/create_oauth_client.php",
-            "app/Helpers/Functions/slug_uri.php",
-            "app/Helpers/Functions/slug.php",
-            "app/Helpers/Functions/user_email_verified.php"
-        ],
+        "files": [],
         "psr-4": {
             "App\\": "app/"
         }

@@ -8,11 +8,14 @@
         <testsuite name="Api">
             <directory suffix="Test.php">./tests/Api</directory>
         </testsuite>
+        <testsuite name="App">
+            <directory suffix="Test.php">./tests/App</directory>
+        </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
-        <testsuite name="Helpers">
-            <directory suffix="Test.php">./tests/Helpers</directory>
+        <testsuite name="Helper">
+            <directory suffix="Test.php">./tests/Helper</directory>
         </testsuite>
         <testsuite name="Models">
             <directory suffix="Test.php">./tests/Models</directory>

@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use Tests\Helpers\Classes\EnvHelperTest;
 
 class EnvHelper
 {

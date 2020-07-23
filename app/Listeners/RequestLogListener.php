@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\RequestLogEvent;
-use App\Models\RequestLog as RequestLogModel;
 use App\Models\User;
 
 class RequestLogListener
@@ -27,6 +26,7 @@ class RequestLogListener
      */
     public function handle(RequestLogEvent $event): void
     {
+        /** @todo Put this on a job. */
         $user = auth()->user();
         $request_log = new \App\Models\RequestLog();
         $request_log->user_id = $user->id ?? User::where('email', config('admin.email'))->first()->id;

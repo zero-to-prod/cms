@@ -1,26 +1,28 @@
 <?php
 
-namespace Tests\Helpers\Classes;
+namespace Tests\Api\V1;
 
-use App\Helpers\UserHelper;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
-class UserHelperTest extends TestCase
+class LogoutControllerTest extends TestCase
 {
+
     use DatabaseMigrations;
     use DatabaseTransactions;
 
     /**
      * @test
-     * @see UserHelper::fromEmail()
+     * @see LogoutController::__invoke()
      */
-    public function fromEmail(): void
+    public function logout(): void
     {
         $user = factory(User::class)->create();
-        factory(User::class, 3)->create();
-        self::assertInstanceOf(User::class, UserHelper::fromEmail($user->email));
+        Passport::actingAs($user);
+        $response = $this->post('/api/v1/logout');
+        $response->assertStatus(200);
     }
 }

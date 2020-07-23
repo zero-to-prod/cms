@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Helpers\Classes;
+namespace Tests\App\Helpers;
 
 use App\Helpers\ApiHelper;
 use Illuminate\Support\Facades\Config;

@@ -3,17 +3,18 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Str;
+use Tests\App\Helpers\HelperTest;
 
-class Helpers
+class Helper
 {
+
     /**
      * Generates a slug.
      *
      * @param  string  $string
      *
      * @return string
-     * @todo Refactor test.
-     * @see
+     * @see HelperTest::slug()
      */
     public static function slug(string $string): string
     {
@@ -26,11 +27,11 @@ class Helpers
      * @param  string  $string
      *
      * @return string
-     * @todo Refactor test.
-     * @see
+     * @see HelperTest::slugLink()
      */
-    public function slug_uri(string $string)
+    public static function slugLink(string $string): string
     {
-        return Str::slug($string, config('slug.separator_uri'));
+        return Str::slug($string, config('slug.separator_link'));
     }
+
 }

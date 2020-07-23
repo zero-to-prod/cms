@@ -2,7 +2,7 @@
 
 /** @var Factory $factory */
 
-use App\Helpers\Helpers;
+use App\Helpers\Helper;
 use App\Models\ProductType;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
@@ -12,7 +12,7 @@ $factory->define(ProductType::class, static function (Faker $faker) {
 
     return [
         'name'        => $name,
-        'slug'        => Helpers::slug($name),
+        'slug'        => Helper::slug($name),
         'description' => $faker->sentence,
     ];
 });
@@ -22,7 +22,7 @@ $factory->state(ProductType::class, 'part', static function (Faker $faker) {
 
     return [
         'name'        => $name,
-        'slug'        => Helpers::slug($name),
+        'slug'        => Helper::slug($name),
         'description' => "Description of $name.",
     ];
 });
@@ -32,7 +32,7 @@ $factory->state(ProductType::class, 'assembly', static function (Faker $faker) {
 
     return [
         'name'        => $name,
-        'slug'        => Helpers::slug($name),
+        'slug'        => Helper::slug($name),
         'description' => "Description of $name.",
     ];
 });

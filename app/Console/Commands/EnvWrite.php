@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Helpers\Classes\EnvHelper;
+use App\Helpers\EnvHelper;
 use Illuminate\Console\Command;
 
 class EnvWrite extends Command

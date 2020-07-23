@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Helpers\Classes;
+namespace Tests\App\Helpers;
 
 use App\Helpers\EnvHelper;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
