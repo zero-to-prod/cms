@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers\Classes;
 
-use App\Helpers\Classes\UserHelper;
+use App\Helpers\UserHelper;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class UserHelperTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 

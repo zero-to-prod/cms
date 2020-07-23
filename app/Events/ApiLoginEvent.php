@@ -2,26 +2,37 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Http\Request;
 use Illuminate\Queue\SerializesModels;
 
-class LogApiLogout
+class ApiLoginEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
+     * @var Request
+     */
+    public $request;
+    /**
+     * @var User
+     */
+    public $user;
+
+    /**
      * Create a new event instance.
      *
-     * @return void
+     * @param  User  $user
+     * @param  Request  $request
      */
-    public function __construct()
+    public function __construct(User $user, Request $request)
     {
-        //
+        $this->user = $user;
+        $this->request = $request;
     }
 
     /**

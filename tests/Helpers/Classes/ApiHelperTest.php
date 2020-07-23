@@ -2,15 +2,14 @@
 
 namespace Tests\Helpers\Classes;
 
-use App\Helpers\Classes\ApiHelper;
+use App\Helpers\ApiHelper;
 use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class ApiHelperTest extends TestCase
 {
-
-    protected const API_CAN_LOGIN        = 'api.API_CAN_LOGIN';
-    protected const API_CAN_REGISTER     = 'api.API_CAN_REGISTER';
+    protected const API_CAN_LOGIN = 'api.API_CAN_LOGIN';
+    protected const API_CAN_REGISTER = 'api.API_CAN_REGISTER';
     protected const API_AUTH_LOG_ENABLED = 'api.API_AUTH_LOG_ENABLED';
 
     /**

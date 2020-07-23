@@ -2,37 +2,27 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Queue\SerializesModels;
 
-class RequestLog
+class UserRegisteredEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * @var Request
-     */
-    public $request;
-    /**
-     * @var Response
-     */
-    public $response;
+    public $user;
 
     /**
      * Create a new event instance.
      *
-     * @param  Request  $request
-     * @param  Response  $response
+     * @param  User  $user
      */
-    public function __construct(Request $request, $response)
+    public function __construct(User $user)
     {
-        $this->request = $request;
-        $this->response = $response;
+        $this->user = $user;
     }
 
     /**
@@ -42,6 +32,6 @@ class RequestLog
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('users');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Classes;
+namespace App\Helpers;
 
 class ApiHelper
 {
@@ -58,6 +58,7 @@ class ApiHelper
     {
         return config('api.API_AUTH_LOG_ENABLED') === '1';
     }
+
     /**
      * Determines if the authentication log is disabled.
      *

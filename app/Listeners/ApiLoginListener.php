@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\LogApiLogin;
+use App\Events\ApiLoginEvent;
 use App\Models\AuthLog;
 
 class ApiLoginListener
@@ -20,11 +20,11 @@ class ApiLoginListener
     /**
      * Handle the event.
      *
-     * @param  LogApiLogin  $event
+     * @param  ApiLoginEvent  $event
      *
      * @return void
      */
-    public function handle(LogApiLogin $event): void
+    public function handle(ApiLoginEvent $event): void
     {
         $auth_log = new AuthLog();
         $auth_log->user_id = $event->user->id;

@@ -2,12 +2,11 @@
 
 namespace Tests\Helpers\Classes;
 
-use App\Helpers\Classes\OauthHelper;
+use App\Helpers\OauthHelper;
 use Tests\TestCase;
 
 class OauthHelperTest extends TestCase
 {
-
     /**
      * @test
      * @see OauthHelper::getTokenUrl()

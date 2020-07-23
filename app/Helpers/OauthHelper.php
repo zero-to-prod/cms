@@ -1,8 +1,21 @@
 <?php
 
-use Laravel\Passport\ClientRepository;
+namespace App\Helpers;
 
-if (! function_exists('create_oauth_client')) {
+use Laravel\Passport\ClientRepository;
+use Tests\Helpers\Classes\OauthHelperTest;
+
+class OauthHelper
+{
+    /**
+     * @return mixed
+     * @see OauthHelperTest::getTokenUrl()
+     */
+    public static function getTokenUrl()
+    {
+        return config('oauth.token_url');
+    }
+
     /**
      * @param $name
      * @param  string  $userId
@@ -16,7 +29,7 @@ if (! function_exists('create_oauth_client')) {
      *
      * @see
      */
-    function create_oauth_client(
+    public function create_client(
         $name,
         $userId = '',
         $redirect = '',

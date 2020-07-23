@@ -2,7 +2,7 @@
 
 namespace Tests\Helpers\Classes;
 
-use App\Helpers\Classes\EnvHelper;
+use App\Helpers\EnvHelper;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
