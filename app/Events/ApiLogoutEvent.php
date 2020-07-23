@@ -10,7 +10,6 @@ use Illuminate\Queue\SerializesModels;
 
 class ApiLogoutEvent
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
