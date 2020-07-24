@@ -24,20 +24,23 @@ class RegisterController extends Controller
      * @param  Request  $request
      *
      * @return mixed
-     * @see RegisterControllerTest::nameIsRequired()
-     * @see RegisterControllerTest::nameIsString()
-     * @see RegisterControllerTest::nameMax()
-     * @see RegisterControllerTest::emailIsRequired()
-     * @see RegisterControllerTest::passwordIsRequired()
+     * @see RegisterControllerTest
      */
     public function __invoke(Request $request)
     {
-        $name_length = config('api.name_length');
-        $request->validate([
-            'name'     => ['required', 'string', "max:$name_length", 'min:2'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'max:255'],
-        ]);
+        /** @todo Make ApiHelpers for the below values. */
+        $name_max_length     = config('api.name_max_length');
+        $name_min_length     = config('api.name_min_length');
+        $password_max_length = config('api.password_max_length');
+        $password_min_length = config('api.password_min_length');
+        $email_max_length    = config('api.email_max_length');
+        $request->validate(
+            [
+                'name'     => ['required', 'string', "max:$name_max_length", "min:$name_min_length"],
+                'email'    => ['required', 'string', 'email', "max:$email_max_length", 'unique:users'],
+                'password' => ['required', 'string', "min:$password_min_length", "max:$password_max_length"],
+            ]
+        );
 
         $user           = new User();
         $user->name     = $request->name;

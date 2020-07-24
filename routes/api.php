@@ -40,8 +40,4 @@ JsonApi::register('default')->routes(static function ($api) {
     $api->resource('products')->relationships(static function ($relations) {
         $relations->hasOne('product_types');
     });
-
-    // $api->resource('auth-logs')->relationships(static function ($relations) {
-    //     $relations->hasOne('user');
-    // });
 });

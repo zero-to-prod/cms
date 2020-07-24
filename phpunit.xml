@@ -20,9 +20,6 @@
         <testsuite name="Routes">
             <directory suffix="Test.php">./tests/Routes</directory>
         </testsuite>
-        <testsuite name="Uri">
-            <directory suffix="Test.php">./tests/Uri</directory>
-        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

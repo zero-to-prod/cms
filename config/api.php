@@ -10,5 +10,9 @@ return [
     'logout_message'              => 'Logged out successfully.',
     'ping_response'               => 'PONG',
     'ping_authorized_response'    => 'PONG AUTHORIZED',
-    'name_length'                 => '255'
+    'name_max_length'             => 255,
+    'name_min_length'             => 2,
+    'password_max_length'         => 255,
+    'password_min_length'         => 8,
+    'email_max_length'            => 255
 ];
