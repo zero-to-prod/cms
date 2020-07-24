@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\V1;
+namespace Tests\Routes\Api\V1;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

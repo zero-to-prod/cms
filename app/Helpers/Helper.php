@@ -32,4 +32,16 @@ class Helper
     {
         return Str::slug($string, config('slug.separator_link'));
     }
+
+    /**
+     * Returns the difference between LARAVEL_START and when this method is called.
+     *
+     * @param $time
+     *
+     * @return mixed
+     * @see HelperTest::requestTime()
+     */
+    public static function requestTime($time){
+        return microtime(true) - $time;
+    }
 }

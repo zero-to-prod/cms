@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\V1;
+namespace Tests\Routes\Api\V1;
 
 use App\Helpers\OauthHelper;
 use App\Http\Controllers\Api\LoginController;

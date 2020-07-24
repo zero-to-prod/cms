@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Api\V1\Users\Actions;
+namespace Tests\Routes\Api\V1\Users\Actions;
 
 use App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController;
 use App\Models\User;

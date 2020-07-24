@@ -1,15 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Tests\Uri\V1\PingAuthorizedTest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Response;
+use Tests\Routes\Api\V1\Authorized\PingTest;
 
 class PingAuthorizedController extends Controller
 {
-    /** @see PingAuthorizedTest */
+
+    /**
+     * @return Application|ResponseFactory|Response
+     * @see PingTest::not_authorized()
+     * @see PingTest::authorized()
+     */
     public function __invoke()
     {
-        return response(config('api.ping_authorized_response'), 200);
+        $status   = 200;
+        $response = $this->title(config('api.ping_authorized_response'))->status($status)->get();
+
+        return response($response, $status);
     }
 }

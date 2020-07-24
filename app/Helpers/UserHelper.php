@@ -3,10 +3,11 @@
 namespace App\Helpers;
 
 use App\Models\User;
-use Tests\Helpers\Classes\UserHelperTest;
+use Tests\App\Helpers\UserHelperTest;
 
 class UserHelper
 {
+
     /**
      * @param $email
      *
@@ -19,14 +20,26 @@ class UserHelper
     }
 
     /**
-     * @param  string  $user_email
-     * @todo Make Test
+     * @param  string  $email
+     *
      * @return bool
+     * @see UserHelperTest::emailIsVerified()
      */
-    public static function user_email_verified(string $user_email): bool
+    public static function emailIsVerified(string $email): bool
     {
-        $user = User::where('email', $user_email)->first();
+        $user = User::where('email', $email)->first();
 
-        return $user->email_verified_at === null;
+        return $user->email_verified_at !== null;
+    }
+
+    /**
+     * @param  string  $email
+     *
+     * @return bool
+     * @see UserHelperTest::emailIsNotVerified()
+     */
+    public static function emailIsNotVerified(string $email): bool
+    {
+        return ! self::emailIsVerified($email);
     }
 }

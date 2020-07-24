@@ -5,9 +5,6 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Api">
-            <directory suffix="Test.php">./tests/Api</directory>
-        </testsuite>
         <testsuite name="App">
             <directory suffix="Test.php">./tests/App</directory>
         </testsuite>
@@ -19,6 +16,9 @@
         </testsuite>
         <testsuite name="Models">
             <directory suffix="Test.php">./tests/Models</directory>
+        </testsuite>
+        <testsuite name="Routes">
+            <directory suffix="Test.php">./tests/Routes</directory>
         </testsuite>
         <testsuite name="Uri">
             <directory suffix="Test.php">./tests/Uri</directory>
