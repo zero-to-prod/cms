@@ -51,8 +51,15 @@ class OauthHelperTest extends TestCase
         $password = true;
         $confidential = true;
 
-        $oauth_client = OauthHelper::create($name, $user_id, $redirect, $provider, $personalAccess, $password,
-            $confidential);
+        $oauth_client = OauthHelper::create(
+            $name,
+            $user_id,
+            $redirect,
+            $provider,
+            $personalAccess,
+            $password,
+            $confidential
+        );
         self::assertEquals($name, $oauth_client->name);
         self::assertEquals($user_id, $oauth_client->user_id);
         self::assertEquals($redirect, $oauth_client->redirect);

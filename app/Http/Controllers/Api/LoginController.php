@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $http = new Client;
+        $http = new Client();
         try {
             $response = $http->post('http://cms.test/oauth/token', [
                 'form_params' => [

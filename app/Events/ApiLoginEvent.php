@@ -12,7 +12,9 @@ use Illuminate\Queue\SerializesModels;
 
 class ApiLoginEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * @var Request

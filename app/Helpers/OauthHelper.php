@@ -40,8 +40,15 @@ class OauthHelper
     ) {
         $ClientRepository = new ClientRepository();
 
-        return $ClientRepository->create($userId, $name, $redirect, $provider, $personalAccess, $password,
-            $confidential);
+        return $ClientRepository->create(
+            $userId,
+            $name,
+            $redirect,
+            $provider,
+            $personalAccess,
+            $password,
+            $confidential
+        );
     }
 
     /**

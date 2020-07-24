@@ -41,7 +41,8 @@ class Helper
      * @return mixed
      * @see HelperTest::requestTime()
      */
-    public static function requestTime($time){
+    public static function requestTime($time)
+    {
         return microtime(true) - $time;
     }
 }

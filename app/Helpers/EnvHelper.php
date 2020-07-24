@@ -19,15 +19,18 @@ class EnvHelper
     public static function write($key, $value): void
     {
         $path = app()->environmentFilePath();
-        $escaped = preg_quote('='.env($key), '/');
+        $escaped = preg_quote('=' . env($key), '/');
         $pattern = "/^{$key}{$escaped}/m";
         $replacement = "{$key}={$value}";
 
         if (preg_match($pattern, file_get_contents($path))) {
-            file_put_contents($path,
-                preg_replace($pattern, $replacement, file_get_contents($path)), LOCK_EX);
+            file_put_contents(
+                $path,
+                preg_replace($pattern, $replacement, file_get_contents($path)),
+                LOCK_EX
+            );
         } else {
-            file_put_contents($path, PHP_EOL."{$key}={$value}", FILE_APPEND | LOCK_EX);
+            file_put_contents($path, PHP_EOL . "{$key}={$value}", FILE_APPEND | LOCK_EX);
         }
     }
 

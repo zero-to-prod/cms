@@ -41,7 +41,7 @@ class Test extends BaseCommand
      */
     public function handle()
     {
-        echo 'Test command fired.'.PHP_EOL;
+        echo 'Test command fired.' . PHP_EOL;
         broadcast(new UserRegisteredEvent());
     }
 }
