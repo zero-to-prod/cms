@@ -1,6 +1,4 @@
 preset: psr12
-disabled:
-  - unused_use
 finder:
   not-name:
     - index.php
