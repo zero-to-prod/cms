@@ -73,17 +73,19 @@ class PassportTestCase extends TestCase
         parent::setUp();
         $clientRepository = new ClientRepository();
         $client = $clientRepository->createPersonalAccessClient(
-            null, 'Test Personal Access Client', config('app.url')
+            null,
+            'Test Personal Access Client',
+            config('app.url')
         );
 
         DB::table('oauth_personal_access_clients')->insert([
             'client_id'  => $client->id,
-            'created_at' => new DateTime,
-            'updated_at' => new DateTime,
+            'created_at' => new DateTime(),
+            'updated_at' => new DateTime(),
         ]);
         $this->user = factory(User::class)->create();
         $token = $this->user->createToken('TestToken', ['*'])->accessToken;
         $this->headers['Accept'] = 'application/json';
-        $this->headers['Authorization'] = 'Bearer '.$token;
+        $this->headers['Authorization'] = 'Bearer ' . $token;
     }
 }

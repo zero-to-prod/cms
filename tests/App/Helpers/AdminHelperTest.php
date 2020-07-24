@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class AdminHelperTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 

@@ -13,7 +13,7 @@ $factory->define(Contact::class, static function (Faker $faker) {
     $last_name = $faker->lastName;
     $domain_name = $faker->domainName;
     $domain_name_other = $faker->domainName;
-    $email_name = strtolower($first_name[0].$last_name);
+    $email_name = strtolower($first_name[0] . $last_name);
 
     return [
         'user_id'             => factory(User::class),

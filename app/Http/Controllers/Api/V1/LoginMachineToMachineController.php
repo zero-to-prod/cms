@@ -17,9 +17,9 @@ class LoginMachineToMachineController
      */
     public function __invoke(Request $request)
     {
-        $guzzle = new Client;
+        $guzzle = new Client();
 
-        $response = $guzzle->post(config('app.url').'/oauth/token', [
+        $response = $guzzle->post(config('app.url') . '/oauth/token', [
             'form_params' => [
                 'grant_type'    => 'client_credentials',
                 'client_id'     => $request->client_id,

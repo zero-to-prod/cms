@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class PingTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 

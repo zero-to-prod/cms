@@ -39,6 +39,6 @@ class EnvWrite extends Command
         $value = $this->argument('value');
 
         EnvHelper::write($key, $value);
-        $this->info('Write env: '."{$key}={$value}");
+        $this->info('Write env: ' . "{$key}={$value}");
     }
 }

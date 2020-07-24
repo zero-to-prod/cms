@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class RegisterControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
