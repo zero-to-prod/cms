@@ -34,6 +34,7 @@ class RegisterController extends Controller
         $password_max_length = config('api.password_max_length');
         $password_min_length = config('api.password_min_length');
         $email_max_length    = config('api.email_max_length');
+        $locale_default      = config('api.locale_default');
         $request->validate(
             [
                 'name'     => ['required', 'string', "max:$name_max_length", "min:$name_min_length"],
@@ -46,6 +47,8 @@ class RegisterController extends Controller
         $user->name     = $request->name;
         $user->email    = $request->email;
         $user->password = Hash::make($request->password);
+        /** @todo Make test for locale. */
+        $user->locale   = $request->local_default ?? $locale_default;
         $user->save();
 
         $status   = 200;
