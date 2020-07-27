@@ -13,7 +13,6 @@ use Tests\TestCase;
 
 class RegisterControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
@@ -201,7 +200,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 6).'@a.com';
+        $email    = Str::random($this->email_max_length - 6) . '@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
@@ -214,7 +213,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsLessThanMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 7).'@a.com';
+        $email    = Str::random($this->email_max_length - 7) . '@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
@@ -227,7 +226,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsGreaterThanMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 5).'@a.com';
+        $email    = Str::random($this->email_max_length - 5) . '@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(302);
@@ -240,7 +239,7 @@ class RegisterControllerTest extends TestCase
     public function emailMusBeUnique(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 6).'@a.com';
+        $email    = Str::random($this->email_max_length - 6) . '@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
