@@ -10,7 +10,6 @@ use Tests\Routes\Api\V1\PingTest;
 
 class PingController extends Controller
 {
-
     /**
      * @return Application|ResponseFactory|Response
      * @see PingTest::ping()

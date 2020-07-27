@@ -10,7 +10,6 @@ use Tests\Routes\Api\V1\Authorized\PingTest;
 
 class PingAuthorizedController extends Controller
 {
-
     /**
      * @return Application|ResponseFactory|Response
      * @see PingTest::not_authorized()
