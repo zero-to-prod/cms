@@ -32,7 +32,7 @@ class RequestLogListener
         /** @todo Put this on a job. */
         $user                                     = auth()->user();
         $request_log                              = new RequestLog();
-        $request_log->user_id                     = $user ?? AdminHelper::id();
+        $request_log->user_id                     = $user->id ?? AdminHelper::id();
         $request_log->path                        = $event->request->path();
         $request_log->request_response_time_delta = Helper::requestTime(LARAVEL_START);
 

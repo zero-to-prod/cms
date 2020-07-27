@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\AuthLog;
 use App\Models\User;
 use Tests\App\Helpers\UserHelperTest;
 
@@ -41,5 +42,17 @@ class UserHelper
     public static function emailIsNotVerified(string $email): bool
     {
         return ! self::emailIsVerified($email);
+    }
+
+    /**
+     * @param $user_id
+     * @param  int  $skip
+     *
+     * @return mixed
+     * @see UserHelperTest::lastLogin()
+     */
+    public static function lastLogin($user_id, $skip = 0)
+    {
+        return AuthLog::where(['user_id' => $user_id, 'login' => '1'])->latest()->skip($skip)->first();
     }
 }

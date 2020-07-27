@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,9 +26,11 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+
     use Notifiable;
     use HasApiTokens;
-    use Cachable;
+
+    // use Cachable;
 
     protected $table = 'users';
     /**
@@ -45,7 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $hidden
         = [
-            'password', 'remember_token',
+            'password',
+            'remember_token',
         ];
     /**
      * The attributes that should be cast to native types.
@@ -58,8 +60,8 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
 
     /**
-     * @see UserTest::meta()
      * @return BelongsTo
+     * @see UserTest::meta()
      */
     public function meta(): BelongsTo
     {
@@ -99,11 +101,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function boot(): void
     {
         parent::boot();
-        self::creating(static function ($user) {
-            $meta = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
-            $user->meta_id = $meta->id;
-            $contact = Contact::create(['user_id' => $user->id]);
-            $user->contact_id = $contact->id;
-        });
+        self::creating(
+            static function ($user) {
+                $meta             = Meta::create(['user_id' => self::where('email', config('admin.email'))->first()]);
+                $user->meta_id    = $meta->id;
+                $contact          = Contact::create(['user_id' => $user->id]);
+                $user->contact_id = $contact->id;
+            }
+        );
     }
 }
