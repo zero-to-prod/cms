@@ -12,7 +12,6 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-
     /**
      * @param  Request  $request
      *

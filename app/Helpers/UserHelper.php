@@ -8,7 +8,6 @@ use Tests\App\Helpers\UserHelperTest;
 
 class UserHelper
 {
-
     /**
      * @param $email
      *
@@ -41,7 +40,7 @@ class UserHelper
      */
     public static function emailIsNotVerified(string $email): bool
     {
-        return ! self::emailIsVerified($email);
+        return !self::emailIsVerified($email);
     }
 
     /**

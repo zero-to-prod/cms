@@ -12,7 +12,7 @@ class ApiHelper
      */
     public static function cannotLogin(): bool
     {
-        return ! self::canLogin();
+        return !self::canLogin();
     }
 
     /**
@@ -45,7 +45,7 @@ class ApiHelper
      */
     public static function cannotRegister(): bool
     {
-        return ! self::canRegister();
+        return !self::canRegister();
     }
 
     /**
@@ -67,6 +67,6 @@ class ApiHelper
      */
     public static function authLogDisabled(): bool
     {
-        return ! self::authLogEnabled();
+        return !self::authLogEnabled();
     }
 }

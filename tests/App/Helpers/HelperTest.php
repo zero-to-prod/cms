@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class HelperTest extends TestCase
 {
-
     /**
      * @see Helper::slug()
      * @test

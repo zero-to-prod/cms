@@ -9,7 +9,6 @@ use App\Models\RequestLog;
 
 class RequestLogListener
 {
-
     /**
      * Create the event listener.
      *

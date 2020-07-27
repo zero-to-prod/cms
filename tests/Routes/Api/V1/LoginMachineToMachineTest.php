@@ -8,7 +8,6 @@ use Tests\PassportTestCase;
 /** @see LoginMachineToMachineController */
 class LoginMachineToMachineTest extends PassportTestCase
 {
-
     /** @test */
     public function todo(): void
     {

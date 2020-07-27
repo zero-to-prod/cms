@@ -7,7 +7,6 @@ use Tests\App\Helpers\AdminHelperTest;
 
 class AdminHelper
 {
-
     /**
      * @return mixed
      * @see AdminHelperTest::getAdmin()

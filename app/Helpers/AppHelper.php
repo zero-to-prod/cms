@@ -23,6 +23,6 @@ class AppHelper
      */
     public static function requestLogNotEnabled(): bool
     {
-        return ! self::requestLogEnabled();
+        return !self::requestLogEnabled();
     }
 }
