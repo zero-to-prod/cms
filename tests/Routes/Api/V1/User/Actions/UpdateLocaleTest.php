@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Routes\Api\V1\Users\Actions;
+namespace Tests\Routes\Api\V1\User\Actions;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -15,7 +15,7 @@ class UpdateLocaleTest extends TestCase
     use DatabaseTransactions;
     use WithoutMiddleware;
 
-    protected const ROUTE = '/api/v1/users/actions/update-locale';
+    protected const ROUTE = '/api/v1/user/actions/update-locale';
 
     /**
      * @test

@@ -21,11 +21,14 @@ JsonApi::register('default')->routes(static function ($api) {
         /** @see \App\Http\Controllers\Api\LogoutController */
         Route::post('/logout', 'LogoutController');
 
+        Route::group(['namespace' => 'V1\\User\\Actions'], static function () {
+            /** @see \App\Http\Controllers\Api\V1\User\Actions\UpdateLocaleController */
+            Route::post('/user/actions/update-locale', 'UpdateLocaleController')->withoutMiddleware('auth:api');
+        });
+
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */
             Route::post('/users/actions/is-email-unique', 'IsEmailUniqueController')->withoutMiddleware('auth:api');
-            /** @see \App\Http\Controllers\Api\V1\Users\Actions\UpdateLocaleController */
-            Route::post('/users/actions/update-locale', 'UpdateLocaleController')->withoutMiddleware('auth:api');
         });
 
         Route::group(['namespace' => 'V1', 'middleware' => []], static function () {
