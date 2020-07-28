@@ -26,7 +26,7 @@ JsonApi::register('default')->routes(static function ($api) {
             Route::post('/users/actions/is-email-unique', 'IsEmailUniqueController')->withoutMiddleware('auth:api');
         });
 
-        Route::group(['namespace' => 'V1'], static function () {
+        Route::group(['namespace' => 'V1', 'middleware' => []], static function () {
             Route::get('/user', 'UserController');
             Route::get('auth-log', 'AuthLogController');
         });

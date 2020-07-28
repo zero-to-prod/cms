@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\ModulesMiddleware;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\RequestLog;
 use App\Http\Middleware\TrimStrings;
@@ -30,6 +31,7 @@ use Laravel\Passport\Http\Middleware\CreateFreshApiToken;
 
 class Kernel extends HttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -45,7 +47,7 @@ class Kernel extends HttpKernel
             ValidatePostSize::class,
             TrimStrings::class,
             ConvertEmptyStringsToNull::class,
-            RequestLog::class,
+            RequestLog::class
         ];
     /**
      * The application's route middleware groups.
@@ -67,7 +69,7 @@ class Kernel extends HttpKernel
 
             'api' => [
                 'throttle:60,1',
-                SubstituteBindings::class,
+                SubstituteBindings::class
             ],
         ];
     /**
@@ -90,5 +92,6 @@ class Kernel extends HttpKernel
             'throttle'         => ThrottleRequests::class,
             'verified'         => EnsureEmailIsVerified::class,
             'client'           => CheckClientCredentials::class,
+            'modules'          => ModulesMiddleware::class
         ];
 }

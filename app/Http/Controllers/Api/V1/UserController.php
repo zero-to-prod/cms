@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\ModulesMiddleware;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -12,6 +13,12 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(ModulesMiddleware::class);
+    }
+
     /**
      * @param  Request  $request
      *
@@ -19,7 +26,10 @@ class UserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        /** @todo make a sub query for last_login. */
+        /**
+         * @todo Make a sub query for last_login.
+         * @todo Make test.
+         */
         $user = User::where('id', auth()->user()->id)->with(
             [
                 'contact',
@@ -33,7 +43,7 @@ class UserController extends Controller
             ->data(
                 [
                     'user'       => $user,
-                    'last_login' => UserHelper::lastLogin($user->id, 1)
+                    'last_login' => UserHelper::lastLogin($user->id, 1) ?? UserHelper::lastLogin($user->id)
                 ]
             )->get();
 

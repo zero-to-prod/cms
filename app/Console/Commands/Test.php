@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
 use App\Events\UserRegisteredEvent;
+use App\Models\Module;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -41,7 +42,11 @@ class Test extends BaseCommand
      */
     public function handle()
     {
-        echo 'Test command fired.' . PHP_EOL;
-        broadcast(new UserRegisteredEvent());
+        $modules = Module::where('is_enabled', true)->get(['id','path']);
+        $patterns = null;
+        foreach($modules as $key => $module){
+            $patterns[] = $module->path;
+        }
+        print_r($patterns[0]);
     }
 }

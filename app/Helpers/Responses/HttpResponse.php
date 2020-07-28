@@ -4,6 +4,7 @@ namespace App\Helpers\Responses;
 
 trait HttpResponse
 {
+
     public $links;
     public $http_status;
     public $response_code;
@@ -13,7 +14,8 @@ trait HttpResponse
 
     public function get(): array
     {
-        return [
+        /** @todo Make test. */
+        $response = [
             'links'  => $this->links,
             'status' => $this->http_status,
             'code'   => $this->response_code,
@@ -21,6 +23,9 @@ trait HttpResponse
             'detail' => $this->response_detail,
             'data'   => $this->response_data,
         ];
+
+        /** array_filter() removes null elements from array. */
+        return array_filter($response);
     }
 
     public function link($link = '')

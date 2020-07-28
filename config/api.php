@@ -15,5 +15,6 @@ return [
     'password_max_length'         => 255,
     'password_min_length'         => 8,
     'email_max_length'            => 255,
-    'locale_default'              => 'en'
+    'locale_default'              => 'en',
+    'module_disabled_message'     => 'This module is not available.'
 ];
