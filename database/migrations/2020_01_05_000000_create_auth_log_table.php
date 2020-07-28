@@ -11,7 +11,7 @@ class CreateAuthLogTable extends Migration
     public function up(): void
     {
         Schema::create(self::TABLE, static function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->boolean('login')->nullable()->default(null);
             $table->boolean('logout')->nullable()->default(null);

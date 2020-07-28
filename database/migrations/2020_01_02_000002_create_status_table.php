@@ -11,7 +11,7 @@ class CreateStatusTable extends Migration
     public function up(): void
     {
         Schema::create(self::TABLE, static function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->bigInteger('meta_id');
             $table->timestamps();
             $table->softDeletes();

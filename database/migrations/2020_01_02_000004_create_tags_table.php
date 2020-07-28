@@ -6,26 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTagsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+
+    protected const TABLE = 'tags';
+
+    public function up(): void
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            self::TABLE,
+            static function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->timestamps();
+            }
+        );
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tags');
+        Schema::dropIfExists(self::TABLE);
     }
 }
