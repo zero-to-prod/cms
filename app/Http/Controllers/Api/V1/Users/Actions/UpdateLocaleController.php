@@ -13,7 +13,6 @@ use Tests\Routes\Api\V1\Users\Actions\UpdateLocaleTest;
 
 class UpdateLocaleController extends JsonApiController
 {
-
     use HttpResponse;
 
     /**
