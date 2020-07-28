@@ -6,7 +6,6 @@ use App\Models\Module;
 
 class ModuleHelper
 {
-
     /**
      * Determines if the request log is enabled.
      *

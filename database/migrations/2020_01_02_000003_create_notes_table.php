@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNotesTable extends Migration
 {
-
     protected const TABLE = 'notes';
 
     public function up(): void

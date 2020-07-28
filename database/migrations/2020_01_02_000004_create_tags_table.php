@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTagsTable extends Migration
 {
-
     protected const TABLE = 'tags';
 
     public function up(): void
