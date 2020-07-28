@@ -11,6 +11,7 @@ use Tests\Routes\Api\V1\RegisterControllerTest;
 
 class RegisterController extends Controller
 {
+
     /**
      * RegisterController constructor.
      */
@@ -39,6 +40,7 @@ class RegisterController extends Controller
                 'name'     => ['required', 'string', "max:$name_max_length", "min:$name_min_length"],
                 'email'    => ['required', 'string', 'email', "max:$email_max_length", 'unique:users'],
                 'password' => ['required', 'string', "min:$password_min_length", "max:$password_max_length"],
+                'locale'   => ['string']
             ]
         );
 
@@ -47,7 +49,7 @@ class RegisterController extends Controller
         $user->email    = $request->email;
         $user->password = Hash::make($request->password);
         /** @todo Make test for locale. */
-        $user->locale   = $request->local_default ?? $locale_default;
+        $user->locale = $request->local_default ?? $locale_default;
         $user->save();
 
         $status   = 200;

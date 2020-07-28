@@ -13,6 +13,7 @@ use Tests\TestCase;
 
 class RegisterControllerTest extends TestCase
 {
+
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
@@ -44,12 +45,22 @@ class RegisterControllerTest extends TestCase
         $name     = $this->faker->name;
         $email    = $this->faker->email;
         $password = Str::random($this->password_max_length);
-        $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
+        $locale   = 'en';
+        $response = $this->post(
+            self::PATH,
+            [
+                'name'     => $name,
+                'email'    => $email,
+                'password' => $password,
+                'locale'   => $locale
+            ]
+        );
         $response->assertStatus(200);
         $user = User::where('email', $email)->first();
         self::assertEquals($name, $user->name);
         self::assertEquals($email, $user->email);
         self::assertIsString($password, $user->password);
+        self::assertEquals($locale, $user->locale);
     }
 
     /**
@@ -200,7 +211,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 6) . '@a.com';
+        $email    = Str::random($this->email_max_length - 6).'@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
@@ -213,7 +224,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsLessThanMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 7) . '@a.com';
+        $email    = Str::random($this->email_max_length - 7).'@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
@@ -226,7 +237,7 @@ class RegisterControllerTest extends TestCase
     public function emailIsGreaterThanMaxLength(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 5) . '@a.com';
+        $email    = Str::random($this->email_max_length - 5).'@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(302);
@@ -239,7 +250,7 @@ class RegisterControllerTest extends TestCase
     public function emailMusBeUnique(): void
     {
         $name     = $this->faker->name;
-        $email    = Str::random($this->email_max_length - 6) . '@a.com';
+        $email    = Str::random($this->email_max_length - 6).'@a.com';
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
@@ -348,5 +359,49 @@ class RegisterControllerTest extends TestCase
         $password = Str::random($this->password_max_length);
         $response = $this->post(self::PATH, ['name' => $name, 'email' => $email, 'password' => $password]);
         $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     * @see RegisterController::__invoke()
+     */
+    public function localeIsString(): void
+    {
+        $name     = Str::random($this->password_max_length);
+        $email    = $this->faker->email;
+        $password = Str::random($this->password_max_length);
+        $locale   = 'en';
+        $response = $this->post(
+            self::PATH,
+            [
+                'name'     => $name,
+                'email'    => $email,
+                'password' => $password,
+                'locale'   => $locale
+            ]
+        );
+        $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     * @see RegisterController::__invoke()
+     */
+    public function localeIsNotString(): void
+    {
+        $name     = Str::random($this->password_max_length);
+        $email    = $this->faker->email;
+        $password = Str::random($this->password_max_length);
+        $locale   = 300;
+        $response = $this->post(
+            self::PATH,
+            [
+                'name'     => $name,
+                'email'    => $email,
+                'password' => $password,
+                'locale'   => $locale
+            ]
+        );
+        $response->assertStatus(302);
     }
 }
