@@ -8,7 +8,6 @@ use Tests\TestCase;
 
 class ModulesHelperTest extends TestCase
 {
-
     /**
      * @test
      * @see ModuleHelper::requestPatterns()

@@ -4,7 +4,6 @@ namespace App\Helpers\Responses;
 
 trait HttpResponse
 {
-
     public $links;
     public $http_status;
     public $response_code;

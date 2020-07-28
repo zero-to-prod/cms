@@ -44,7 +44,7 @@ class Test extends BaseCommand
     {
         $modules = Module::where('is_enabled', true)->get(['id','path']);
         $patterns = null;
-        foreach($modules as $key => $module){
+        foreach ($modules as $key => $module) {
             $patterns[] = $module->path;
         }
         print_r($patterns[0]);

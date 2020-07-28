@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateModulesTable extends Migration
 {
-
     protected const TABLE = 'modules';
 
     public function up(): void
