@@ -11,7 +11,6 @@ use Tests\TestCase;
 /** @see UpdateLocaleController */
 class UpdateLocaleTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
