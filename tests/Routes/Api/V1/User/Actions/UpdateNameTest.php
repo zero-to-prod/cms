@@ -13,7 +13,6 @@ use Tests\TestCase;
 /** @see UpdateNameController */
 class UpdateNameTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;

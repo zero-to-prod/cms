@@ -15,7 +15,6 @@ use Tests\Routes\Api\V1\User\Actions\UpdateNameTest;
 
 class UpdateNameController extends JsonApiController
 {
-
     use HttpResponse;
 
     /**

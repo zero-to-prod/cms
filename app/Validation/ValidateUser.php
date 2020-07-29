@@ -6,7 +6,6 @@ use Tests\App\Helpers\AdminHelperTest;
 
 class ValidateUser
 {
-
     /**
      * @return array|string[]
      */
