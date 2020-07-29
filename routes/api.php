@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 JsonApi::register('default')->routes(static function ($api) {
     Route::namespace('Api')->group(static function () {
+        Route::get('/', static function () {
+            return response(null, 200);
+        })->withoutMiddleware('auth:api');
 
         /** @see \App\Http\Controllers\Api\PingController */
         Route::get('/ping', 'PingController')->withoutMiddleware('auth:api');
@@ -24,6 +27,9 @@ JsonApi::register('default')->routes(static function ($api) {
         Route::group(['namespace' => 'V1\\User\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\User\Actions\UpdateLocaleController */
             Route::post('/user/actions/update-locale', 'UpdateLocaleController')->withoutMiddleware('auth:api');
+
+            /** @see \App\Http\Controllers\Api\V1\User\Actions\UpdateNameController */
+            Route::post('/user/actions/update-name', 'UpdateNameController')->withoutMiddleware('auth:api');
         });
 
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {

@@ -2,50 +2,52 @@
 
 namespace Tests\Routes\Api\V1\User\Actions;
 
+use App\Http\Controllers\Api\V1\User\Actions\UpdateNameController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
-/** @see UpdateLocaleController */
-class UpdateLocaleTest extends TestCase
+/** @see UpdateNameController */
+class UpdateNameTest extends TestCase
 {
 
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
+    use WithFaker;
 
-    protected const ROUTE = '/api/v1/user/actions/update-locale';
+    protected const ROUTE = '/api/v1/user/actions/update-name';
 
     /**
      * @test
      */
-    public function set_locale(): void
+    public function set_name(): void
     {
-        $user   = factory(User::class)->create(['locale' => 'en']);
-        $locale = 'es';
+        $user = factory(User::class)->create(['name' => $this->faker->name]);
         $this->post(
             self::ROUTE,
             [
-                'id'          => $user->id,
-                'user_locale' => $locale
+                'id'   => $user->id,
+                'name' => $user->name
             ]
         )->assertStatus(204);
         $query = User::where('id', $user->id)->first();
-        self::assertEquals($locale, $query->locale);
+        self::assertEquals($user->name, $query->name);
     }
 
     /**
      * @test
      */
-    public function locale_not_present(): void
+    public function name_not_present(): void
     {
-        $user = factory(User::class)->create(['locale' => 'en']);
+        $user = factory(User::class)->create(['name' => $this->faker->name]);
         $this->post(
             self::ROUTE,
             [
-                'id' => $user->id
+                'id'   => $user->id,
             ]
         )->assertStatus(302);
     }
@@ -55,11 +57,11 @@ class UpdateLocaleTest extends TestCase
      */
     public function id_not_present(): void
     {
-        $user = factory(User::class)->create(['locale' => 'en']);
+        $user = factory(User::class)->create(['name' => $this->faker->name]);
         $this->post(
             self::ROUTE,
             [
-                'user_locale' => 'en',
+                'name' => $user->name
             ]
         )->assertStatus(302);
     }

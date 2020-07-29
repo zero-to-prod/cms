@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanRegister;
 use App\Models\User;
+use App\Validation\ValidateUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Tests\Routes\Api\V1\RegisterControllerTest;
 
 class RegisterController extends Controller
 {
+
     /**
      * RegisterController constructor.
      */
@@ -27,19 +29,12 @@ class RegisterController extends Controller
      */
     public function __invoke(Request $request)
     {
-        /** @todo Make ApiHelpers for the below values. */
-        $name_max_length     = config('api.name_max_length');
-        $name_min_length     = config('api.name_min_length');
-        $password_max_length = config('api.password_max_length');
-        $password_min_length = config('api.password_min_length');
-        $email_max_length    = config('api.email_max_length');
-        $locale_default      = config('api.locale_default');
         $request->validate(
             [
-                'name'     => ['required', 'string', "max:$name_max_length", "min:$name_min_length"],
-                'email'    => ['required', 'string', 'email', "max:$email_max_length", 'unique:users'],
-                'password' => ['required', 'string', "min:$password_min_length", "max:$password_max_length"],
-                'locale'   => ['string']
+                'name'     => ValidateUser::name(),
+                'email'    => ValidateUser::email(),
+                'password' => ValidateUser::password(),
+                'locale'   => ValidateUser::localeForRegistration()
             ]
         );
 
@@ -48,7 +43,7 @@ class RegisterController extends Controller
         $user->email    = $request->email;
         $user->password = Hash::make($request->password);
         /** @todo Make test for locale. */
-        $user->locale = $request->local_default ?? $locale_default;
+        $user->locale = $request->local_default ?? config('api.locale_default');
         $user->save();
 
         $status   = 200;

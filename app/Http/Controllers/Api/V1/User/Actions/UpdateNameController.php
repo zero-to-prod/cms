@@ -11,8 +11,9 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Tests\Routes\Api\V1\User\Actions\UpdateLocaleTest;
+use Tests\Routes\Api\V1\User\Actions\UpdateNameTest;
 
-class UpdateLocaleController extends JsonApiController
+class UpdateNameController extends JsonApiController
 {
 
     use HttpResponse;
@@ -23,18 +24,18 @@ class UpdateLocaleController extends JsonApiController
      * @param  Request  $request
      *
      * @return Application|ResponseFactory|Response
-     * @see UpdateLocaleTest
+     * @see UpdateNameTest
      */
     public function __invoke(Request $request)
     {
         $request->validate(
             [
-                'id'          => ValidateUser::id(),
-                'user_locale' => ValidateUser::locale()
+                'id'   => ValidateUser::id(),
+                'name' => ValidateUser::name()
             ]
         );
-        $user         = User::where('id', $request->id)->first();
-        $user->locale = $request->user_locale;
+        $user       = User::where('id', $request->id)->first();
+        $user->name = $request->name;
         $user->save();
 
         return response(null, 204);
