@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Tests\Routes\Api\V1\User\Actions\UpdateLocaleTest;
 
 class UpdateLocaleController extends JsonApiController
@@ -28,11 +29,10 @@ class UpdateLocaleController extends JsonApiController
     {
         $request->validate(
             [
-                'id'          => ValidateUser::id(),
                 'user_locale' => ValidateUser::locale()
             ]
         );
-        $user         = User::where('id', $request->id)->first();
+        $user         = User::where('id', Auth::user()->id)->first();
         $user->locale = $request->user_locale;
         $user->save();
 

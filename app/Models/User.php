@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 
 /**
@@ -106,6 +107,20 @@ class User extends Authenticatable implements MustVerifyEmail
                 $user->meta_id    = $meta->id;
                 $contact          = Contact::create(['user_id' => $user->id]);
                 $user->contact_id = $contact->id;
+            }
+        );
+        self::updated(
+            static function ($user) {
+                $meta                     = Meta::where('id', Auth::user()->meta_id)->first();
+                $meta->user_id_updated_at = $user->id;
+                $meta->save();
+            }
+        );
+        self::deleted(
+            static function ($user) {
+                $meta                     = Meta::where('id', Auth::user()->meta_id)->first();
+                $meta->user_id_deleted_at = $user->id;
+                $meta->save();
             }
         );
     }

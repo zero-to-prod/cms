@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property mixed name
  * @property mixed id
  * @method static create(array $array)
+ * @method static where(string $string, $id)
  */
 class Meta extends Model
 {

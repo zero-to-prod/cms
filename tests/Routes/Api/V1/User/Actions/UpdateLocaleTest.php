@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 /** @see UpdateLocaleController */
@@ -22,15 +23,10 @@ class UpdateLocaleTest extends TestCase
      */
     public function set_locale(): void
     {
-        $user   = factory(User::class)->create(['locale' => 'en']);
+        $user = factory(User::class)->create(['locale' => 'en']);
+        Passport::actingAs($user);
         $locale = 'es';
-        $this->post(
-            self::ROUTE,
-            [
-                'id'          => $user->id,
-                'user_locale' => $locale
-            ]
-        )->assertStatus(204);
+        $this->post(self::ROUTE, ['user_locale' => $locale])->assertStatus(204);
         $query = User::where('id', $user->id)->first();
         self::assertEquals($locale, $query->locale);
     }
@@ -41,25 +37,7 @@ class UpdateLocaleTest extends TestCase
     public function locale_not_present(): void
     {
         $user = factory(User::class)->create(['locale' => 'en']);
-        $this->post(
-            self::ROUTE,
-            [
-                'id' => $user->id
-            ]
-        )->assertStatus(302);
-    }
-
-    /**
-     * @test
-     */
-    public function id_not_present(): void
-    {
-        $user = factory(User::class)->create(['locale' => 'en']);
-        $this->post(
-            self::ROUTE,
-            [
-                'user_locale' => 'en',
-            ]
-        )->assertStatus(302);
+        Passport::actingAs($user);
+        $this->post(self::ROUTE, [])->assertStatus(302);
     }
 }

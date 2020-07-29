@@ -10,7 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Tests\Routes\Api\V1\User\Actions\UpdateLocaleTest;
+use Illuminate\Support\Facades\Auth;
 use Tests\Routes\Api\V1\User\Actions\UpdateNameTest;
 
 class UpdateNameController extends JsonApiController
@@ -29,11 +29,10 @@ class UpdateNameController extends JsonApiController
     {
         $request->validate(
             [
-                'id'   => ValidateUser::id(),
                 'name' => ValidateUser::name()
             ]
         );
-        $user       = User::where('id', $request->id)->first();
+        $user       = User::where('id', Auth::user()->id)->first();
         $user->name = $request->name;
         $user->save();
 

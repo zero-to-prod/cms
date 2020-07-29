@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 /** @see UpdateNameController */
@@ -26,13 +27,8 @@ class UpdateNameTest extends TestCase
     public function set_name(): void
     {
         $user = factory(User::class)->create(['name' => $this->faker->name]);
-        $this->post(
-            self::ROUTE,
-            [
-                'id'   => $user->id,
-                'name' => $user->name
-            ]
-        )->assertStatus(204);
+        Passport::actingAs($user);
+        $this->post(self::ROUTE, ['name' => $user->name])->assertStatus(204);
         $query = User::where('id', $user->id)->first();
         self::assertEquals($user->name, $query->name);
     }
@@ -47,20 +43,6 @@ class UpdateNameTest extends TestCase
             self::ROUTE,
             [
                 'id'   => $user->id,
-            ]
-        )->assertStatus(302);
-    }
-
-    /**
-     * @test
-     */
-    public function id_not_present(): void
-    {
-        $user = factory(User::class)->create(['name' => $this->faker->name]);
-        $this->post(
-            self::ROUTE,
-            [
-                'name' => $user->name
             ]
         )->assertStatus(302);
     }
