@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthLogController extends Controller
 {
-
     /**
      * @param  Response  $response
      *
