@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 JsonApi::register('default')->routes(static function ($api) {
     Route::namespace('Api')->group(static function () {
 
+        Route::get('/', 'PingController')->withoutMiddleware('auth:api');
+
+
         /** @see \App\Http\Controllers\Api\PingController */
         Route::get('/ping', 'PingController')->withoutMiddleware('auth:api');
 
