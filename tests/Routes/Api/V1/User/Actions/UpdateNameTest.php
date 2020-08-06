@@ -14,6 +14,7 @@ use Tests\TestCase;
 /** @see UpdateNameController */
 class UpdateNameTest extends TestCase
 {
+
     use DatabaseMigrations;
     use DatabaseTransactions;
     use WithoutMiddleware;
@@ -23,6 +24,7 @@ class UpdateNameTest extends TestCase
 
     /**
      * @test
+     * @see UpdateNameController::__invoke()
      */
     public function set_name(): void
     {
@@ -35,6 +37,7 @@ class UpdateNameTest extends TestCase
 
     /**
      * @test
+     * @see UpdateNameController::__invoke()
      */
     public function name_not_present(): void
     {
@@ -42,7 +45,7 @@ class UpdateNameTest extends TestCase
         $this->post(
             self::ROUTE,
             [
-                'id'   => $user->id,
+                'id' => $user->id,
             ]
         )->assertStatus(302);
     }

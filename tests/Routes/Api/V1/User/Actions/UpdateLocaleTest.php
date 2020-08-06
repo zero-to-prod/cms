@@ -2,6 +2,7 @@
 
 namespace Tests\Routes\Api\V1\User\Actions;
 
+use App\Http\Controllers\Api\V1\User\Actions\UpdateLocaleController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -20,6 +21,7 @@ class UpdateLocaleTest extends TestCase
 
     /**
      * @test
+     * @see UpdateLocaleController::__invoke()
      */
     public function set_locale(): void
     {
@@ -33,6 +35,7 @@ class UpdateLocaleTest extends TestCase
 
     /**
      * @test
+     * @see UpdateLocaleController::__invoke()
      */
     public function locale_not_present(): void
     {
