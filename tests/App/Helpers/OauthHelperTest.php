@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class OauthHelperTest extends TestCase
 {
-
     use DatabaseTransactions;
     use DatabaseMigrations;
 

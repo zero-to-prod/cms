@@ -8,7 +8,6 @@ use Tests\App\Helpers\ScopesHelperTest;
 
 class ScopesHelper
 {
-
     /**
      * Returns an associative array of scopes
      *
