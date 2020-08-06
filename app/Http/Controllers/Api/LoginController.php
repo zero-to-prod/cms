@@ -11,10 +11,12 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Laravel\Passport\Http\Middleware\CheckForAnyScope;
 use Psr\Http\Message\StreamInterface;
 
 class LoginController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware(ApiCanLogin::class);
@@ -28,17 +30,27 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $http = new Client();
+        $email     = $request->email;
+        if (UserHelper::cannotLogin($email)) {
+            return response()->json('Login disabled for user.', 401);
+        }
+        $http      = new Client();
+        $token_url = env('OAUTH_URI_TOKEN');
+        $scope     = UserHelper::scopes($email);
         try {
-            $response = $http->post('http://cms.test/oauth/token', [
-                'form_params' => [
-                    'grant_type'    => 'password',
-                    'client_id'     => $request->client_id,
-                    'client_secret' => $request->client_secret,
-                    'username'      => $request->email,
-                    'password'      => $request->password,
-                ],
-            ]);
+            $response = $http->post(
+                $token_url,
+                [
+                    'form_params' => [
+                        'grant_type'    => 'password',
+                        'client_id'     => $request->client_id,
+                        'client_secret' => $request->client_secret,
+                        'username'      => $email,
+                        'password'      => $request->password,
+                        'scope'         => $scope,
+                    ],
+                ]
+            );
 
             if (ApiHelper::authLogEnabled()) {
                 $user = UserHelper::fromEmail($request->email);

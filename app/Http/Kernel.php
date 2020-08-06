@@ -27,10 +27,13 @@ use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Laravel\Passport\Http\Middleware\CheckClientCredentials;
+use Laravel\Passport\Http\Middleware\CheckForAnyScope;
+use Laravel\Passport\Http\Middleware\CheckScopes;
 use Laravel\Passport\Http\Middleware\CreateFreshApiToken;
 
 class Kernel extends HttpKernel
 {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -91,6 +94,7 @@ class Kernel extends HttpKernel
             'throttle'         => ThrottleRequests::class,
             'verified'         => EnsureEmailIsVerified::class,
             'client'           => CheckClientCredentials::class,
-            'modules'          => ModulesMiddleware::class
+            'scopes'           => CheckScopes::class,
+            'scope'            => CheckForAnyScope::class,
         ];
 }

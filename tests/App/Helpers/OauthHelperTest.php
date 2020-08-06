@@ -15,11 +15,11 @@ class OauthHelperTest extends TestCase
 
     /**
      * @test
-     * @see OauthHelper::getTokenUrl()
+     * @see OauthHelper::tokenUrl()
      */
-    public function getTokenUrl(): void
+    public function tokenUrl(): void
     {
-        self::assertIsString(OauthHelper::getTokenUrl());
+        self::assertIsString(OauthHelper::tokenUrl());
     }
 
     /**
@@ -66,5 +66,14 @@ class OauthHelperTest extends TestCase
         self::assertTrue($oauth_client->personal_access_client);
         self::assertTrue($oauth_client->password_client);
         self::assertIsString($oauth_client->secret);
+    }
+
+    /**
+     * @test
+     * @see OauthHelper::scopes()
+     */
+    public function scopes(): void
+    {
+        self::assertIsArray(OauthHelper::scopes());
     }
 }

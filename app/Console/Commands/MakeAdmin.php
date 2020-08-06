@@ -42,11 +42,14 @@ class MakeAdmin extends BaseCommand
     {
         $user = User::where('email', config('admin.email'))->first();
         if ($user === null) {
-            $user = DB::table('users')->insert([
+            DB::table('users')->insert([
                 'name'     => config('admin.name'),
                 'email'    => config('admin.email'),
                 'password' => Hash::make(config('admin.password')),
+                'can_login' => 1,
                 'meta_id'  => 0,
+                'locale'   => 'en',
+                'scopes'   => 'admin'
             ]);
             $this->info('Admin user created.');
             // @todo Make this code DRY.

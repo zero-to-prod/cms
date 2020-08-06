@@ -2,16 +2,20 @@
 
 namespace App\Helpers;
 
+use Illuminate\Config\Repository;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\ClientRepository;
+use Tests\App\Helpers\OauthHelperTest;
 
 class OauthHelper
 {
+
     /**
      * @return mixed
-     * @see OauthHelperTest::getTokenUrl()
+     * @see OauthHelperTest::tokenUrl()
      */
-    public static function getTokenUrl()
+    public static function tokenUrl()
     {
         return config('oauth.token_url');
     }
@@ -66,5 +70,16 @@ class OauthHelper
         string $provider = 'users'
     ): int {
         return Artisan::call("passport:client --password --name='$name' --provider='$provider'");
+    }
+
+    /**
+     * Returns an associative array of scopes
+     *
+     * @return Repository|Application|mixed
+     * @see OauthHelperTest::scopes()
+     */
+    public static function scopes(): array
+    {
+        return config('oauth.scopes');
     }
 }

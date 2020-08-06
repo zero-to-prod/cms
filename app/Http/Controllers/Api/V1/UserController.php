@@ -10,6 +10,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Laravel\Passport\Passport;
 
 class UserController extends Controller
 {
@@ -37,7 +38,8 @@ class UserController extends Controller
             ->data(
                 [
                     'user'       => $user,
-                    'last_login' => UserHelper::lastLogin($user->id, 1) ?? UserHelper::lastLogin($user->id)
+                    'last_login' => UserHelper::lastLogin($user->id, 1) ?? UserHelper::lastLogin($user->id),
+                    'scopes'     => UserHelper::scopesAsArray($user->email)
                 ]
             )->get();
 
