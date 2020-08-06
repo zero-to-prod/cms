@@ -22,7 +22,7 @@ class LoginTest extends TestCase
     }
 
     /**
-     * @todo Make test work.
+     * @todo Fix test.
      * @test
      */
     // public function is_redirected_if_already_logged_in()

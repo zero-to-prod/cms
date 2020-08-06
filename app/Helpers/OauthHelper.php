@@ -71,15 +71,4 @@ class OauthHelper
     ): int {
         return Artisan::call("passport:client --password --name='$name' --provider='$provider'");
     }
-
-    /**
-     * Returns an associative array of scopes
-     *
-     * @return Repository|Application|mixed
-     * @see OauthHelperTest::scopes()
-     */
-    public static function scopes(): array
-    {
-        return config('oauth.scopes');
-    }
 }

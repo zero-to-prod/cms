@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\OauthHelper;
+use App\Helpers\ScopesHelper;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -30,6 +31,6 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
-        Passport::tokensCan(OauthHelper::scopes());
+        Passport::tokensCan(ScopesHelper::tokensCan());
     }
 }
