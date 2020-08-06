@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\ApiLoginEvent;
+use App\Helpers\AdminHelper;
 use App\Helpers\ApiHelper;
+use App\Helpers\ScopesHelper;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
@@ -35,11 +37,10 @@ class LoginController extends Controller
             return response()->json('Login disabled for user.', 401);
         }
         $http      = new Client();
-        $token_url = env('OAUTH_URI_TOKEN');
-        $scope     = UserHelper::scopes($email);
+
         try {
             $response = $http->post(
-                $token_url,
+                env('OAUTH_URI_TOKEN'),
                 [
                     'form_params' => [
                         'grant_type'    => 'password',
@@ -47,7 +48,7 @@ class LoginController extends Controller
                         'client_secret' => $request->client_secret,
                         'username'      => $email,
                         'password'      => $request->password,
-                        'scope'         => $scope,
+                        'scope'         => UserHelper::applyScopes($email),
                     ],
                 ]
             );

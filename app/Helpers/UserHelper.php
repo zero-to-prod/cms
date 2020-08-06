@@ -98,7 +98,7 @@ class UserHelper
      */
     public static function canLogin(string $email)
     {
-        return (bool) User::where('email', $email)->first(['id', 'can_login'])->can_login;
+        return (bool)User::where('email', $email)->first(['id', 'can_login'])->can_login;
     }
 
     /**
@@ -110,5 +110,31 @@ class UserHelper
     public static function cannotLogin(string $email)
     {
         return ! self::canLogin($email);
+    }
+
+    /**
+     * @param $email
+     *
+     * @return mixed
+     * @see UserHelperTest::applyScopes()
+     */
+    public static function applyScopes(string $email): string
+    {
+        if (AdminHelper::applyAllScopesToAdmin() && self::isAdmin($email)) {
+            return ScopesHelper::asString();
+        }
+
+        return (string)self::scopes($email);
+    }
+
+    /**
+     * @param  string  $email
+     *
+     * @return bool
+     * @see UserHelperTest::isAdmin()
+     */
+    public static function isAdmin(string $email): bool
+    {
+        return (bool) User::where('email', $email)->first(['id', 'is_admin'])->is_admin;
     }
 }

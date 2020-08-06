@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Console\BaseCommand;
+use App\Helpers\ScopesHelper;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -49,7 +50,7 @@ class MakeAdmin extends BaseCommand
                 'can_login' => 1,
                 'meta_id'  => 0,
                 'locale'   => 'en',
-                'scopes'   => 'admin'
+                'scopes'   => ScopesHelper::asString()
             ]);
             $this->info('Admin user created.');
             // @todo Make this code DRY.

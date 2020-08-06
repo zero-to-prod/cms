@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
                 $table->char('email')->unique()->comment('Used as the primary contact.');
                 $table->timestamp('email_verified_at')->nullable()->comment('Used indicate a verified account.');
                 $table->string('password');
+                $table->boolean('is_admin')->default(0)->comment('Used to determine an administrator account');
                 $table->boolean('can_login')->default(1)->comment('Used to determine if user can login');
                 $table->char('locale')->nullable()->default('en')->comment('Defines the default local of the user.');
                 $table->text('scopes')->nullable()->comment('Used to define scopes of an oauth client.');

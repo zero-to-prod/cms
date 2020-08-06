@@ -7,6 +7,7 @@ use Tests\App\Helpers\AdminHelperTest;
 
 class AdminHelper
 {
+
     /**
      * @return mixed
      * @see AdminHelperTest::getAdmin()
@@ -23,5 +24,14 @@ class AdminHelper
     public static function id()
     {
         return self::get()->id;
+    }
+
+    /**
+     * @return bool
+     * @see AdminHelperTest::applyAllScopes()
+     */
+    public static function applyAllScopesToAdmin(): bool
+    {
+        return (bool)config('admin.apply_all_scopes');
     }
 }

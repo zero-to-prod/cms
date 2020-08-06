@@ -7,6 +7,7 @@ use App\Models\AuthLog;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class UserHelperTest extends TestCase
@@ -128,5 +129,43 @@ class UserHelperTest extends TestCase
     {
         $user = factory(User::class)->create(['can_login' => 0]);
         self::assertTrue(UserHelper::cannotLogin($user->email));
+    }
+
+    /**
+     * @test
+     * @see UserHelper::applyScopes()
+     */
+    public function applyScopes(): void
+    {
+        $scopes = [
+            'admin' => 'Admin',
+            'user'  => 'User'
+        ];
+        Config::set('scopes', $scopes);
+
+        Config::set('admin.apply_all_scopes', 1);
+        $user_admin = factory(User::class)->create(['is_admin' => 1, 'scopes' => 'admin']);
+        self::assertEquals('admin user', UserHelper::applyScopes($user_admin->email));
+        Config::set('admin.apply_all_scopes', 0);
+        self::assertEquals('admin', UserHelper::applyScopes($user_admin->email));
+
+        $user       = factory(User::class)->create(['is_admin' => 0, 'scopes' => 'user']);
+        Config::set('admin.apply_all_scopes', 1);
+        self::assertEquals('user', UserHelper::applyScopes($user->email));
+        Config::set('admin.apply_all_scopes', 0);
+        self::assertEquals('user', UserHelper::applyScopes($user->email));
+    }
+
+    /**
+     * @test
+     * @see UserHelper::isAdmin()
+     */
+    public function isAdmin(): void
+    {
+        $user_admin = factory(User::class)->create(['is_admin' => 1]);
+        self::assertTrue(UserHelper::isAdmin($user_admin->email));
+
+        $user = factory(User::class)->create(['is_admin' => 0]);
+        self::assertFalse(UserHelper::isAdmin($user->email));
     }
 }

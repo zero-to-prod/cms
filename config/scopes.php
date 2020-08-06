@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'admin' => 'Admin',
-    'user'  => 'User'
+    'admin'     => 'Admin',
+    'dashboard' => 'Dashboard',
+    'user'      => 'User'
 ];
