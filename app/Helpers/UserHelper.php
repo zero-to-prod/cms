@@ -8,7 +8,6 @@ use Tests\App\Helpers\UserHelperTest;
 
 class UserHelper
 {
-
     /**
      * @param $email
      *

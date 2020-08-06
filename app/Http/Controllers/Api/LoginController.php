@@ -16,7 +16,6 @@ use Psr\Http\Message\StreamInterface;
 
 class LoginController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware(ApiCanLogin::class);

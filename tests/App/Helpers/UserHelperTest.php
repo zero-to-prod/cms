@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class UserHelperTest extends TestCase
 {
-
     use DatabaseMigrations;
     use DatabaseTransactions;
 
