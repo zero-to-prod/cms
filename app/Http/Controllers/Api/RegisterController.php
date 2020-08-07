@@ -10,7 +10,6 @@ use Tests\Routes\Api\V1\RegisterControllerTest;
 
 class RegisterController extends Controller
 {
-
     /**
      * RegisterController constructor.
      */
@@ -35,8 +34,7 @@ class RegisterController extends Controller
                 'email'    => $request->email,
                 'password' => $request->password,
                 'locale'   => $request->user_locale
-            ]
-            ,
+            ],
             true
         );
 

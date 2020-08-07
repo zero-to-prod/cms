@@ -17,7 +17,6 @@ use Tests\Models\RequestLogTest;
  */
 class RequestLog extends Model
 {
-
     use Cachable;
 
     protected $table    = 'request_log';
