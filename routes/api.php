@@ -39,7 +39,7 @@ JsonApi::register('default')->routes(static function ($api) {
 
         Route::group(['namespace' => 'V1', 'middleware' => []], static function () {
             /** @see \App\Http\Controllers\Api\V1\UserShowController */
-            Route::get('/user', 'UserShowController');
+            Route::post('/user', 'UserShowController');
 
             /** @see \App\Http\Controllers\Api\V1\AuthLogController */
             Route::get('auth-log', 'AuthLogController')->middleware('scopes:admin');

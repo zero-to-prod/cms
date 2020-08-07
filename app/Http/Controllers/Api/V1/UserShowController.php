@@ -37,8 +37,8 @@ class UserShowController extends Controller
             ->data(
                 [
                     'user'       => $user,
-                    'last_login' => UserHelper::lastLogin($user->id, 1) ?? UserHelper::lastLogin($user->id),
-                    'scopes'     => UserHelper::scopesAsArray($user->email)
+                    'last_login' => User::secondToLastLogin($user->id),
+                    'scopes'     => User::scopesAsArray($user->email)
                 ]
             )->get();
 

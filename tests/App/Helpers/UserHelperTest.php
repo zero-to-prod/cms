@@ -79,6 +79,19 @@ class UserHelperTest extends TestCase
 
     /**
      * @test
+     * @see UserHelper::secondToLastLogin()
+     */
+    public function secondToLastLogin(): void
+    {
+        $user           = factory(User::class)->create();
+        $auth_log       = factory(AuthLog::class)->create(['user_id' => $user->id, 'login' => 1]);
+        $auth_log       = $auth_log->toArray();
+        factory(AuthLog::class)->create(['user_id' => $user->id, 'login' => 1]);
+        $logged_in_user = UserHelper::secondToLastLogin($user->id)->toArray();
+        self::assertEquals($auth_log['created_at'], $logged_in_user['created_at']);
+    }
+    /**
+     * @test
      * @see UserHelper::scopes()
      */
     public function scopes(): void

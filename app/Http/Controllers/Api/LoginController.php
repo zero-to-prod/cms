@@ -8,6 +8,7 @@ use App\Helpers\OauthHelper;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
+use App\Models\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
@@ -31,7 +32,7 @@ class LoginController extends Controller
     {
         $email = $request->email;
 
-        if (UserHelper::cannotLogin($email)) {
+        if (User::cannotLogin($email)) {
             return response()->json('Login disabled for user.', 401);
         }
 
@@ -46,13 +47,13 @@ class LoginController extends Controller
                         'client_secret' => $request->client_secret,
                         'username'      => $email,
                         'password'      => $request->password,
-                        'scope'         => UserHelper::applyScopes($email),
+                        'scope'         => User::applyScopes($email),
                     ],
                 ]
             );
 
             if (ApiHelper::authLogEnabled()) {
-                $user = UserHelper::fromEmail($request->email);
+                $user = User::fromEmail($request->email);
                 event(new ApiLoginEvent($user, $request));
             }
 

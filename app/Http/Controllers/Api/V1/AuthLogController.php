@@ -19,6 +19,10 @@ class AuthLogController extends Controller
     public function __invoke(Response $response)
     {
         /** @todo Make test. */
-        return response(AuthLog::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->limit(10)->get(['login', 'created_at', 'ip_address','user_agent']), 200);
+        $data = AuthLog::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->limit(10)->get(
+            ['login', 'created_at', 'ip_address', 'user_agent']
+        );
+
+        return response($data, 200);
     }
 }
