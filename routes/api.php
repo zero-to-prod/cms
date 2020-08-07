@@ -34,12 +34,12 @@ JsonApi::register('default')->routes(static function ($api) {
 
         Route::group(['namespace' => 'V1\\Users\\Actions'], static function () {
             /** @see \App\Http\Controllers\Api\V1\Users\Actions\IsEmailUniqueController */
-            Route::post('/users/actions/is-email-unique', 'IsEmailUniqueController')->withoutMiddleware('auth:api');
+            Route::post('/user/actions/is-email-unique', 'IsEmailUniqueController')->withoutMiddleware('auth:api');
         });
 
         Route::group(['namespace' => 'V1', 'middleware' => []], static function () {
-            /** @see \App\Http\Controllers\Api\V1\UserController */
-            Route::get('/user', 'UserController');
+            /** @see \App\Http\Controllers\Api\V1\UserShowController */
+            Route::get('/user', 'UserShowController');
 
             /** @see \App\Http\Controllers\Api\V1\AuthLogController */
             Route::get('auth-log', 'AuthLogController')->middleware('scopes:admin');

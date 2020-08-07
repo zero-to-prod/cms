@@ -20,7 +20,7 @@ $factory->define(
             'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'can_login'         => 1,
             'remember_token'    => Str::random(10),
-            'locale'            => config('api.locale_default'),
+            'locale'            => config('api.locale'),
             'scopes'            => '',
             'created_at'        => now(),
             'updated_at'        => null,

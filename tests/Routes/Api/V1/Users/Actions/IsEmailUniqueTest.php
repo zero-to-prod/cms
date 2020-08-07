@@ -14,7 +14,7 @@ class IsEmailUniqueTest extends TestCase
     use DatabaseMigrations;
     use DatabaseTransactions;
 
-    protected const ROUTE = '/api/v1/users/actions/is-email-unique';
+    protected const ROUTE = '/api/v1/user/actions/is-email-unique';
 
     /** @test */
     public function email_is_unique()

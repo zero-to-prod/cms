@@ -1,16 +1,49 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models;
 
+use App\Contracts\ModelContract;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class {{ class }} extends Model
+class {{ class }} extends Model implements ModelContract
 {
 
     use Cachable;
 
     protected $fillable = ['*'];
+    // casts = [''];
 
+    /**
+     * @param  array  $columns
+     * @param  false  $save
+     *
+     * @return mixed
+     */
+    public static function match(array $columns, $save = false)
+    {
+        $model = new self();
+        // $model->name     = $columns['name'];
 
+        if ($save) {
+            $model->save();
+        }
+
+        return $model;
+    }
+
+    /**
+     * @param  Request  $request
+     *
+     * @return array
+     */
+    public static function validateRequest(Request $request): array
+    {
+        return $request->validate(
+            [
+                // 'name'        => ['required'],
+            ]
+        );
+    }
 }

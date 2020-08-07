@@ -10,9 +10,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Laravel\Passport\Passport;
 
-class UserController extends Controller
+class UserShowController extends Controller
 {
     /**
      * @param  Request  $request

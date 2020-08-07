@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Contracts\ModelContract;
+use App\Validation\ValidateUser;
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,8 +11,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
 /**
@@ -28,7 +32,7 @@ use Laravel\Passport\HasApiTokens;
  * @property mixed deleted_at
  * @property Repository|Application|mixed locale
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, ModelContract
 {
 
     use Notifiable;
@@ -64,6 +68,44 @@ class User extends Authenticatable implements MustVerifyEmail
             'is_admin'          => 'boolean',
             'can_login'         => 'boolean'
         ];
+
+    /**
+     * @param  array  $columns
+     * @param  false  $save
+     *
+     * @return User
+     */
+    public static function match(array $columns, $save = false): User
+    {
+        $model           = new self();
+        $model->name     = $columns['name'];
+        $model->email    = $columns['email'];
+        $model->password = Hash::make($columns['password']);
+        $model->locale   = $columns['locale'] ?? config('api.locale');
+
+        if ($save) {
+            $model->save();
+        }
+
+        return $model;
+    }
+
+    /**
+     * @param  Request  $request
+     *
+     * @return array
+     */
+    public static function validateRequest(Request $request): array
+    {
+        return $request->validate(
+            [
+                'name'        => ValidateUser::name(),
+                'email'       => ValidateUser::email(),
+                'password'    => ValidateUser::password(),
+                'user_locale' => ValidateUser::localeForRegistration()
+            ]
+        );
+    }
 
     /**
      * @return BelongsTo
