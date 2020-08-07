@@ -8,7 +8,6 @@ use Tests\App\Helpers\UserHelperTest;
 
 trait UserHelper
 {
-
     /**
      * @param $email
      *
