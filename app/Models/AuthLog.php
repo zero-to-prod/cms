@@ -32,6 +32,11 @@ class AuthLog extends Model
 
     protected $table = 'auth_log';
     protected $fillable = ['*'];
+    protected $casts = [
+        'login' => 'boolean',
+        'logout' => 'boolean',
+        'secure' => 'boolean'
+    ];
 
     /**
      * @see AuthLogTest

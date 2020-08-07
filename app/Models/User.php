@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Config\Repository;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -24,9 +26,11 @@ use Laravel\Passport\HasApiTokens;
  * @property mixed created_at
  * @property mixed updated_at
  * @property mixed deleted_at
+ * @property Repository|Application|mixed locale
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+
     use Notifiable;
     use HasApiTokens;
 
@@ -57,6 +61,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts
         = [
             'email_verified_at' => 'datetime',
+            'is_admin'          => 'boolean',
+            'can_login'         => 'boolean'
         ];
 
     /**

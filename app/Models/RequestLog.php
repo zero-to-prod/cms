@@ -17,10 +17,12 @@ use Tests\Models\RequestLogTest;
  */
 class RequestLog extends Model
 {
+
     use Cachable;
 
-    protected $table = 'request_log';
+    protected $table    = 'request_log';
     protected $fillable = ['*'];
+    protected $casts    = ['error' => 'boolean'];
 
     /**
      * @return BelongsTo
