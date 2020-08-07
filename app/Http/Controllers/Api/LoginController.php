@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Events\ApiLoginEvent;
-use App\Helpers\AdminHelper;
 use App\Helpers\ApiHelper;
-use App\Helpers\ScopesHelper;
+use App\Helpers\OauthHelper;
 use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\ApiCanLogin;
@@ -13,7 +12,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Laravel\Passport\Http\Middleware\CheckForAnyScope;
 use Psr\Http\Message\StreamInterface;
 
 class LoginController extends Controller
@@ -31,15 +29,16 @@ class LoginController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $email     = $request->email;
+        $email = $request->email;
+
         if (UserHelper::cannotLogin($email)) {
             return response()->json('Login disabled for user.', 401);
         }
-        $http      = new Client();
 
+        $http = new Client();
         try {
             $response = $http->post(
-                env('OAUTH_URI_TOKEN'),
+                OauthHelper::tokenUrl(),
                 [
                     'form_params' => [
                         'grant_type'    => 'password',
