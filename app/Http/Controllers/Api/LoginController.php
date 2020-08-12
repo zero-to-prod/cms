@@ -38,7 +38,7 @@ class LoginController extends Controller
         $http = new Client();
         try {
             $response = $http->post(
-                OauthHelper::tokenUrl(),
+                'http://cms.test/oauth/token',
                 [
                     'form_params' => [
                         'grant_type'    => 'password',

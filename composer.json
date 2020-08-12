@@ -39,7 +39,6 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "aws/aws-sdk-php": "~3.0",
-        "cloudcreativity/laravel-json-api": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "genealabs/laravel-model-caching": "*",
@@ -57,7 +56,6 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "cloudcreativity/json-api-testing": "^3.0",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
