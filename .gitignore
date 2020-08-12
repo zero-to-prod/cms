@@ -14,3 +14,6 @@ yarn-error.log
 /phpunit.phar
 dump.rdb
 laravel-echo-server.lock
+/schema-directives.graphql
+/programmatic-types.graphql
+/_lighthouse_ide_helper.php
