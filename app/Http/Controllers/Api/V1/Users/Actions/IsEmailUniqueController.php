@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api\V1\Users\Actions;
 
 use App\Models\User;
-use CloudCreativity\LaravelJsonApi\Http\Controllers\JsonApiController;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class IsEmailUniqueController extends JsonApiController
+class IsEmailUniqueController
 {
     /**
      * Determines if an email is unique.
