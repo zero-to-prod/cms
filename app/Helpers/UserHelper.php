@@ -6,7 +6,7 @@ use App\Models\AuthLog;
 use App\Models\User;
 use Tests\App\Helpers\UserHelperTest;
 
-class UserHelper
+trait UserHelper
 {
     /**
      * @param $email
@@ -64,6 +64,19 @@ class UserHelper
     public static function lastLogin($user_id, $skip = 0)
     {
         return AuthLog::where(['user_id' => $user_id, 'login' => '1'])->latest()->skip($skip)->first();
+    }
+
+    /**
+     * Get the second to last login.
+     * If there is none, return the last login.
+     *
+     * @param $user_id
+     *
+     * @return mixed
+     */
+    public static function secondToLastLogin($user_id)
+    {
+        return self::lastLogin($user_id, 1) ?? self::lastLogin($user_id);
     }
 
     /**

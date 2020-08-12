@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Contracts\ModelContract;
+use App\Helpers\UserHelper;
 use App\Validation\ValidateUser;
 use Illuminate\Config\Repository;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -34,11 +35,9 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable implements MustVerifyEmail, ModelContract
 {
-
     use Notifiable;
     use HasApiTokens;
-
-    // use Cachable;
+    use UserHelper;
 
     protected $table = 'users';
     /**
